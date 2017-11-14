@@ -1,0 +1,63 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Actaparticipacion2
+ *
+ * @ORM\Table(name="actaparticipacion2", indexes={@ORM\Index(name="fk_actaparticipacion2_actaparticipacion11_idx", columns={"idactaparticipacion1"}), @ORM\Index(name="fk_actaparticipacion2_empresas1_idx", columns={"empresas_idempresas"}), @ORM\Index(name="fk_actaparticipacion2_solicitud1_idx", columns={"idsolicitud"})})
+ * @ORM\Entity
+ */
+class Actaparticipacion2
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="consignacion", type="string", length=3, nullable=true)
+     */
+    private $consignacion;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idactaparticipacion2", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idactaparticipacion2;
+
+    /**
+     * @var \principal\principalBundle\Entity\Actaparticipacion1
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Actaparticipacion1")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idactaparticipacion1", referencedColumnName="idactaparticipacion1")
+     * })
+     */
+    private $idactaparticipacion1;
+
+    /**
+     * @var \principal\principalBundle\Entity\Empresas
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Empresas")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="empresas_idempresas", referencedColumnName="idempresas")
+     * })
+     */
+    private $empresasempresas;
+
+    /**
+     * @var \principal\principalBundle\Entity\Solicitud
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Solicitud")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idsolicitud", referencedColumnName="idsolicitud")
+     * })
+     */
+    private $idsolicitud;
+
+
+}
+

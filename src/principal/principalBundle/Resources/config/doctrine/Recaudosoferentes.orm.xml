@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="principal\principalBundle\Entity\Recaudosoferentes" table="recaudosoferentes">
+    <id name="idrecaudos" type="integer" column="idrecaudos">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombredocumento" type="string" column="nombredocumento" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="definicion" type="text" column="definicion" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tipodocumento" type="string" column="tipodocumento" length="6" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Legal
+Tecnico
+Oferta</option>
+      </options>
+    </field>
+    <field name="puntajemin" type="integer" column="puntajemin" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="puntajemed" type="integer" column="puntajemed" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="puntajemax" type="integer" column="puntajemax" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

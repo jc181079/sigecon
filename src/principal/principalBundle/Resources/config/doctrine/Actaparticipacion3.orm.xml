@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="principal\principalBundle\Entity\Actaparticipacion3" table="actaparticipacion3">
+    <indexes>
+      <index name="fk_actaparticipacion3_actaparticipacion11_idx" columns="idactaparticipacion1"/>
+      <index name="fk_actaparticipacion3_solicitud1_idx" columns="idsolicitud"/>
+      <index name="fk_actaparticipacion3_pliegoaspectos1_idx" columns="idpliegoaspectos"/>
+    </indexes>
+    <id name="idactaparticipacion3" type="integer" column="idactaparticipacion3">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="recaudado" type="string" column="recaudado" length="3" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">si
+no
+n/a</option>
+      </options>
+    </field>
+    <many-to-one field="idactaparticipacion1" target-entity="Actaparticipacion1" fetch="LAZY">
+      <join-columns>
+        <join-column name="idactaparticipacion1" referenced-column-name="idactaparticipacion1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idpliegoaspectos" target-entity="Pliegoaspectos" fetch="LAZY">
+      <join-columns>
+        <join-column name="idpliegoaspectos" referenced-column-name="idpliegoaspectos"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idsolicitud" target-entity="Solicitud" fetch="LAZY">
+      <join-columns>
+        <join-column name="idsolicitud" referenced-column-name="idsolicitud"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,67 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Estatus
+ *
+ * @ORM\Table(name="estatus", indexes={@ORM\Index(name="fk_estatus_tipoestatus1_idx", columns={"idtipoestatus"}), @ORM\Index(name="fk_estatus_solicitud1_idx", columns={"idsolicitud"})})
+ * @ORM\Entity
+ */
+class Estatus
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="observacion", type="text", nullable=true)
+     */
+    private $observacion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechaestatus", type="date", nullable=true)
+     */
+    private $fechaestatus;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="puntero", type="boolean", nullable=true)
+     */
+    private $puntero;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idestatus", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idestatus;
+
+    /**
+     * @var \principal\principalBundle\Entity\Solicitud
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Solicitud")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idsolicitud", referencedColumnName="idsolicitud")
+     * })
+     */
+    private $idsolicitud;
+
+    /**
+     * @var \principal\principalBundle\Entity\Tipoestatus
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Tipoestatus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idtipoestatus", referencedColumnName="idtipoestatus")
+     * })
+     */
+    private $idtipoestatus;
+
+
+}
+

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="principal\principalBundle\Entity\Comitecontrataciones" table="comitecontrataciones">
+    <indexes>
+      <index name="fk_comitecontrataciones_funcionaros1_idx" columns="idfuncionaros"/>
+      <index name="fk_comitecontrataciones_comision1_idx" columns="idcomision"/>
+    </indexes>
+    <id name="idcomisioncontrataciones" type="integer" column="idcomisioncontrataciones">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="activo" type="boolean" column="activo" nullable="true">
+      <options>
+        <option name="comment">0 inactivo
+1 activo</option>
+      </options>
+    </field>
+    <field name="tipomiembro" type="string" column="tipomiembro" length="9" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">-Principal
+-Suplente</option>
+      </options>
+    </field>
+    <many-to-one field="idcomision" target-entity="Comision" fetch="LAZY">
+      <join-columns>
+        <join-column name="idcomision" referenced-column-name="idcomision"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idfuncionaros" target-entity="Funcionaros" fetch="LAZY">
+      <join-columns>
+        <join-column name="idfuncionaros" referenced-column-name="idfuncionaros"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

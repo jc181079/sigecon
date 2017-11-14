@@ -1,0 +1,56 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Pliegoaspectos
+ *
+ * @ORM\Table(name="pliegoaspectos", indexes={@ORM\Index(name="fk_pliegoaspectos_pliego1_idx", columns={"pliego_idpliego"}), @ORM\Index(name="fk_pliegoaspectos_recaudosoferentes1_idx", columns={"recaudosoferentes_idrecaudos"}), @ORM\Index(name="fk_pliegoaspectos_solicitud1_idx", columns={"idsolicitud"})})
+ * @ORM\Entity
+ */
+class Pliegoaspectos
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idpliegoaspectos", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idpliegoaspectos;
+
+    /**
+     * @var \principal\principalBundle\Entity\Pliego
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Pliego")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="pliego_idpliego", referencedColumnName="idpliego")
+     * })
+     */
+    private $pliegopliego;
+
+    /**
+     * @var \principal\principalBundle\Entity\Recaudosoferentes
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Recaudosoferentes")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="recaudosoferentes_idrecaudos", referencedColumnName="idrecaudos")
+     * })
+     */
+    private $recaudosoferentesrecaudos;
+
+    /**
+     * @var \principal\principalBundle\Entity\Solicitud
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Solicitud")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idsolicitud", referencedColumnName="idsolicitud")
+     * })
+     */
+    private $idsolicitud;
+
+
+}
+

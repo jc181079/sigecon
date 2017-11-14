@@ -1,0 +1,47 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Modalidades
+ *
+ * @ORM\Table(name="modalidades")
+ * @ORM\Entity
+ */
+class Modalidades
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nommodalidad", type="string", length=20, nullable=true)
+     */
+    private $nommodalidad;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prefijo", type="string", length=34, nullable=true)
+     */
+    private $prefijo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="correlativo", type="integer", nullable=true)
+     */
+    private $correlativo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idmodalidades", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idmodalidades;
+
+
+}
+

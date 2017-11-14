@@ -1,0 +1,193 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Pliego
+ *
+ * @ORM\Table(name="pliego", indexes={@ORM\Index(name="fk_pliego_libroproceso1_idx", columns={"libroproceso"}), @ORM\Index(name="fk_pliego_solicitud1_idx", columns={"idsolicitud"})})
+ * @ORM\Entity
+ */
+class Pliego
+{
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="frpinicio", type="date", nullable=true)
+     */
+    private $frpinicio;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="frpfin", type="date", nullable=true)
+     */
+    private $frpfin;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fapinicio", type="date", nullable=true)
+     */
+    private $fapinicio;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fapfin", type="date", nullable=true)
+     */
+    private $fapfin;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="frap", type="date", nullable=true)
+     */
+    private $frap;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hrap", type="string", length=7, nullable=true)
+     */
+    private $hrap;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fvt", type="date", nullable=true)
+     */
+    private $fvt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lvt", type="text", nullable=true)
+     */
+    private $lvt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hvt", type="string", length=7, nullable=true)
+     */
+    private $hvt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prvt", type="string", length=45, nullable=true)
+     */
+    private $prvt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tprvt", type="string", length=45, nullable=true)
+     */
+    private $tprvt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hrpam", type="string", length=45, nullable=true)
+     */
+    private $hrpam;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hrppm", type="string", length=45, nullable=true)
+     */
+    private $hrppm;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fap", type="date", nullable=true)
+     */
+    private $fap;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hrsap", type="string", length=45, nullable=true)
+     */
+    private $hrsap;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hasap", type="string", length=7, nullable=true)
+     */
+    private $hasap;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mecanismo", type="text", nullable=true)
+     */
+    private $mecanismo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="pfmin", type="integer", nullable=true)
+     */
+    private $pfmin;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="pfmax", type="integer", nullable=true)
+     */
+    private $pfmax;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ptmin", type="integer", nullable=true)
+     */
+    private $ptmin;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ptmax", type="integer", nullable=true)
+     */
+    private $ptmax;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idpliego", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idpliego;
+
+    /**
+     * @var \principal\principalBundle\Entity\Libroproceso
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Libroproceso")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="libroproceso", referencedColumnName="idlibroproceso")
+     * })
+     */
+    private $libroproceso;
+
+    /**
+     * @var \principal\principalBundle\Entity\Solicitud
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Solicitud")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idsolicitud", referencedColumnName="idsolicitud")
+     * })
+     */
+    private $idsolicitud;
+
+
+}
+

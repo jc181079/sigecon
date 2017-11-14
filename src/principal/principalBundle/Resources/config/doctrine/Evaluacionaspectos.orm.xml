@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="principal\principalBundle\Entity\Evaluacionaspectos" table="evaluacionaspectos">
+    <indexes>
+      <index name="fk_evaluacionaspectos_pliegoaspectos1_idx" columns="idpliegoaspectos"/>
+      <index name="fk_evaluacionaspectos_empresas1_idx" columns="empresas_idempresas"/>
+      <index name="fk_evaluacionaspectos_solicitud1_idx" columns="idsolicitud"/>
+    </indexes>
+    <id name="idevaluacionaspectos" type="integer" column="idevaluacionaspectos">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="resultado" type="integer" column="resultado" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">resultado cuantitativo se coloca el valor numerico de puntos que obtuvo</option>
+      </options>
+    </field>
+    <field name="califcualitativa" type="string" column="califcualitativa" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">calificacion cualitativa:
+-Califica
+-No Califica
+el aspecto tecnico</option>
+      </options>
+    </field>
+    <field name="puntcualitativa" type="string" column="puntcualitativa" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">puntiacion cualitativa:
+-Superior
+-Igual
+-Inferior
+a la puntuacion minima establecida en el pliego</option>
+      </options>
+    </field>
+    <field name="resultcualitativo" type="string" column="resultcualitativo" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">resultado cualitativo:
+-Le permite
+-Le impide
+pasar a la evaluacion financiera</option>
+      </options>
+    </field>
+    <many-to-one field="empresasempresas" target-entity="Empresas" fetch="LAZY">
+      <join-columns>
+        <join-column name="empresas_idempresas" referenced-column-name="idempresas"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idpliegoaspectos" target-entity="Pliegoaspectos" fetch="LAZY">
+      <join-columns>
+        <join-column name="idpliegoaspectos" referenced-column-name="idpliegoaspectos"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idsolicitud" target-entity="Solicitud" fetch="LAZY">
+      <join-columns>
+        <join-column name="idsolicitud" referenced-column-name="idsolicitud"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

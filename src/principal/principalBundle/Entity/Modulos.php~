@@ -1,0 +1,60 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Modulos
+ *
+ * @ORM\Table(name="modulos", indexes={@ORM\Index(name="fk_modulos_perfil1_idx", columns={"perfil_idperfil"}), @ORM\Index(name="fk_modulos_usuarios1_idx", columns={"usuarios_idusuarios"})})
+ * @ORM\Entity
+ */
+class Modulos
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nommodulo", type="string", length=45, nullable=true)
+     */
+    private $nommodulo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="observacionmod", type="string", length=45, nullable=true)
+     */
+    private $observacionmod;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idmodulos", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idmodulos;
+
+    /**
+     * @var \principal\principalBundle\Entity\Perfil
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Perfil")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="perfil_idperfil", referencedColumnName="idperfil")
+     * })
+     */
+    private $perfilperfil;
+
+    /**
+     * @var \principal\principalBundle\Entity\Usuarios
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Usuarios")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="usuarios_idusuarios", referencedColumnName="idusuarios")
+     * })
+     */
+    private $usuariosusuarios;
+
+
+}
+

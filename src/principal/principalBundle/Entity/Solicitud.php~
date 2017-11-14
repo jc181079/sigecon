@@ -1,0 +1,137 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Solicitud
+ *
+ * @ORM\Table(name="solicitud", indexes={@ORM\Index(name="fk_solicitud_entesolicitante_idx", columns={"entesolicitante"}), @ORM\Index(name="fk_solicitud_usuarios1_idx", columns={"usuarios_idusuarios"})})
+ * @ORM\Entity
+ */
+class Solicitud
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion", type="text", nullable=true)
+     */
+    private $descripcion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="objeto", type="text", nullable=true)
+     */
+    private $objeto;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha", type="date", nullable=true)
+     */
+    private $fecha;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adjudicacion", type="string", length=7, nullable=true)
+     */
+    private $adjudicacion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="actividad", type="string", length=8, nullable=true)
+     */
+    private $actividad;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="procedencia", type="string", length=12, nullable=true)
+     */
+    private $procedencia;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="presupuestobase", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $presupuestobase;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="disponibilidadtotal", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $disponibilidadtotal;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="modalidadestimada", type="string", length=7, nullable=true)
+     */
+    private $modalidadestimada;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecharecibida", type="date", nullable=true)
+     */
+    private $fecharecibida;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nroofico", type="string", length=45, nullable=true)
+     */
+    private $nroofico;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechaoficio", type="date", nullable=true)
+     */
+    private $fechaoficio;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="periodosol", type="integer", nullable=true)
+     */
+    private $periodosol;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idsolicitud", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idsolicitud;
+
+    /**
+     * @var \principal\principalBundle\Entity\Entesolicitante
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Entesolicitante")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="entesolicitante", referencedColumnName="identesolicitante")
+     * })
+     */
+    private $entesolicitante;
+
+    /**
+     * @var \principal\principalBundle\Entity\Usuarios
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Usuarios")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="usuarios_idusuarios", referencedColumnName="idusuarios")
+     * })
+     */
+    private $usuariosusuarios;
+
+
+}
+

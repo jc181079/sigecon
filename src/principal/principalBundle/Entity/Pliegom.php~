@@ -1,0 +1,70 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Pliegom
+ *
+ * @ORM\Table(name="pliegom", indexes={@ORM\Index(name="fk_pliegom_und1_idx", columns={"und"}), @ORM\Index(name="fk_pliegom_pliego1_idx", columns={"pliego"}), @ORM\Index(name="fk_pliegom_solicitud1_idx", columns={"idsolicitud"})})
+ * @ORM\Entity
+ */
+class Pliegom
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenda", type="string", length=45, nullable=true)
+     */
+    private $prenda;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cantidad", type="string", length=45, nullable=true)
+     */
+    private $cantidad;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idpliegom", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idpliegom;
+
+    /**
+     * @var \principal\principalBundle\Entity\Pliego
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Pliego")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="pliego", referencedColumnName="idpliego")
+     * })
+     */
+    private $pliego;
+
+    /**
+     * @var \principal\principalBundle\Entity\Solicitud
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Solicitud")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idsolicitud", referencedColumnName="idsolicitud")
+     * })
+     */
+    private $idsolicitud;
+
+    /**
+     * @var \principal\principalBundle\Entity\Und
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Und")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="und", referencedColumnName="idund")
+     * })
+     */
+    private $und;
+
+
+}
+

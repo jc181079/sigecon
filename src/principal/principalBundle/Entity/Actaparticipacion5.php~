@@ -1,0 +1,46 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Actaparticipacion5
+ *
+ * @ORM\Table(name="actaparticipacion5", indexes={@ORM\Index(name="fk_actaparticipacion5_actaparticipacion11_idx", columns={"actaparticipacion1_idactaparticipacion1"}), @ORM\Index(name="fk_actaparticipacion5_solicitud1_idx", columns={"idsolicitud"})})
+ * @ORM\Entity
+ */
+class Actaparticipacion5
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idactaparticipacion5", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idactaparticipacion5;
+
+    /**
+     * @var \principal\principalBundle\Entity\Actaparticipacion1
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Actaparticipacion1")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="actaparticipacion1_idactaparticipacion1", referencedColumnName="idactaparticipacion1")
+     * })
+     */
+    private $actaparticipacion1actaparticipacion1;
+
+    /**
+     * @var \principal\principalBundle\Entity\Solicitud
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Solicitud")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idsolicitud", referencedColumnName="idsolicitud")
+     * })
+     */
+    private $idsolicitud;
+
+
+}
+

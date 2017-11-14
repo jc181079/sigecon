@@ -1,0 +1,105 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Garantiaoferta
+ *
+ * @ORM\Table(name="garantiaoferta", indexes={@ORM\Index(name="fk_garantiaoferta_empresas1_idx", columns={"idempresas"}), @ORM\Index(name="fk_garantiaoferta_pliego1_idx", columns={"idpliego"}), @ORM\Index(name="fk_garantiaoferta_solicitud1_idx", columns={"idsolicitud"})})
+ * @ORM\Entity
+ */
+class Garantiaoferta
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="emisor", type="string", length=45, nullable=true)
+     */
+    private $emisor;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="monto", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $monto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipogarantia", type="string", length=45, nullable=true)
+     */
+    private $tipogarantia;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codigogarantia", type="string", length=45, nullable=true)
+     */
+    private $codigogarantia;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codigo", type="string", length=45, nullable=true)
+     */
+    private $codigo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="enteemisor", type="string", length=45, nullable=true)
+     */
+    private $enteemisor;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="montogarantia", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $montogarantia;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idgarantiaoferta", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idgarantiaoferta;
+
+    /**
+     * @var \principal\principalBundle\Entity\Empresas
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Empresas")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idempresas", referencedColumnName="idempresas")
+     * })
+     */
+    private $idempresas;
+
+    /**
+     * @var \principal\principalBundle\Entity\Pliego
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Pliego")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idpliego", referencedColumnName="idpliego")
+     * })
+     */
+    private $idpliego;
+
+    /**
+     * @var \principal\principalBundle\Entity\Solicitud
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Solicitud")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idsolicitud", referencedColumnName="idsolicitud")
+     * })
+     */
+    private $idsolicitud;
+
+
+}
+

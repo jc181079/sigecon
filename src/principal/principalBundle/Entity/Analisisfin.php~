@@ -1,0 +1,214 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Analisisfin
+ *
+ * @ORM\Table(name="analisisfin", indexes={@ORM\Index(name="fk_analisisfin_empresas1_idx", columns={"idempresas"}), @ORM\Index(name="fk_analisisfin_solicitud1_idx", columns={"idsolicitud"})})
+ * @ORM\Entity
+ */
+class Analisisfin
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="periodo", type="integer", nullable=true)
+     */
+    private $periodo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cxc", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $cxc;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ac", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $ac;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="at", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $at;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pc", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $pc;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pt", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $pt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="p", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $p;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="it", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $it;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="un", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $un;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="s", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $s;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="su", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $su;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="rotcxc", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $rotcxc;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="rotcxcu", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $rotcxcu;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="redsact", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $redsact;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="redsactu", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $redsactu;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="rentpatri", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $rentpatri;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="rentpatriu", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $rentpatriu;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="endeud", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $endeud;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="endeudu", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $endeudu;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="capnet", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $capnet;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="factrend", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $factrend;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="vipc", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $vipc;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cfec", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $cfec;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nfec", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $nfec;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idanalisisfin", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idanalisisfin;
+
+    /**
+     * @var \principal\principalBundle\Entity\Empresas
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Empresas")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idempresas", referencedColumnName="idempresas")
+     * })
+     */
+    private $idempresas;
+
+    /**
+     * @var \principal\principalBundle\Entity\Solicitud
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Solicitud")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idsolicitud", referencedColumnName="idsolicitud")
+     * })
+     */
+    private $idsolicitud;
+
+
+}
+

@@ -1,0 +1,103 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Empresas
+ *
+ * @ORM\Table(name="empresas")
+ * @ORM\Entity
+ */
+class Empresas
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombreempre", type="string", length=45, nullable=true)
+     */
+    private $nombreempre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="rif", type="string", length=10, nullable=true)
+     */
+    private $rif;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefono", type="string", length=45, nullable=true)
+     */
+    private $telefono;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=45, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="objetosocial", type="text", nullable=true)
+     */
+    private $objetosocial;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="representantelegal", type="string", length=45, nullable=true)
+     */
+    private $representantelegal;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cedula", type="string", length=45, nullable=true)
+     */
+    private $cedula;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="registromer", type="text", nullable=true)
+     */
+    private $registromer;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nro", type="string", length=45, nullable=true)
+     */
+    private $nro;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tomo", type="string", length=45, nullable=true)
+     */
+    private $tomo;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechatomo", type="date", nullable=true)
+     */
+    private $fechatomo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idempresas", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idempresas;
+
+
+}
+

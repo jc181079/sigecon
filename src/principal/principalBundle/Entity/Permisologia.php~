@@ -1,0 +1,64 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Permisologia
+ *
+ * @ORM\Table(name="permisologia", indexes={@ORM\Index(name="fk_permosologia_perfil1_idx", columns={"perfil"})})
+ * @ORM\Entity
+ */
+class Permisologia
+{
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="incluir", type="boolean", nullable=true)
+     */
+    private $incluir;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="modificar", type="boolean", nullable=true)
+     */
+    private $modificar;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="consultar", type="boolean", nullable=true)
+     */
+    private $consultar;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="eliminar", type="boolean", nullable=true)
+     */
+    private $eliminar;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idpermisologia", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idpermisologia;
+
+    /**
+     * @var \principal\principalBundle\Entity\Perfil
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Perfil")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="perfil", referencedColumnName="idperfil")
+     * })
+     */
+    private $perfil;
+
+
+}
+

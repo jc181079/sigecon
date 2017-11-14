@@ -1,0 +1,47 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Libros
+ *
+ * @ORM\Table(name="libros")
+ * @ORM\Entity
+ */
+class Libros
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombrelibro", type="string", length=45, nullable=true)
+     */
+    private $nombrelibro;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="observacionlibro", type="string", length=45, nullable=true)
+     */
+    private $observacionlibro;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prefijo", type="string", length=10, nullable=true)
+     */
+    private $prefijo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idlibros", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idlibros;
+
+
+}
+

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="principal\principalBundle\Entity\Otroslibros" table="otroslibros">
+    <indexes>
+      <index name="fk_otroslibros_libros1_idx" columns="libros"/>
+      <index name="fk_otroslibros_libroproceso1_idx" columns="libroproceso"/>
+      <index name="fk_otroslibros_solicitud1_idx" columns="idsolicitud"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="codlibro_UNIQUE" columns="codlibro"/>
+    </unique-constraints>
+    <id name="idotroslibros" type="integer" column="idotroslibros">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="codlibro" type="string" column="codlibro" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fechalibro" type="date" column="fechalibro" nullable="true"/>
+    <many-to-one field="libroproceso" target-entity="Libroproceso" fetch="LAZY">
+      <join-columns>
+        <join-column name="libroproceso" referenced-column-name="idlibroproceso"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="libros" target-entity="Libros" fetch="LAZY">
+      <join-columns>
+        <join-column name="libros" referenced-column-name="idlibros"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idsolicitud" target-entity="Solicitud" fetch="LAZY">
+      <join-columns>
+        <join-column name="idsolicitud" referenced-column-name="idsolicitud"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

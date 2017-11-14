@@ -1,0 +1,33 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Entesolicitante
+ *
+ * @ORM\Table(name="entesolicitante")
+ * @ORM\Entity
+ */
+class Entesolicitante
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombreente", type="text", nullable=true)
+     */
+    private $nombreente;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="identesolicitante", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $identesolicitante;
+
+
+}
+

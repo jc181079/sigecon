@@ -1,0 +1,63 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Actaparticipacion7
+ *
+ * @ORM\Table(name="actaparticipacion7", indexes={@ORM\Index(name="fk_actaparticipacion6_actaparticipacion11_idx", columns={"idactaparticipacion1"}), @ORM\Index(name="fk_actaparticipacion7_solicitud1_idx", columns={"idsolicitud"}), @ORM\Index(name="fk_actaparticipacion7_pliegom1_idx", columns={"idpliegom"})})
+ * @ORM\Entity
+ */
+class Actaparticipacion7
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="recaudado", type="string", length=3, nullable=true)
+     */
+    private $recaudado;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idactaparticipacion6", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idactaparticipacion6;
+
+    /**
+     * @var \principal\principalBundle\Entity\Actaparticipacion1
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Actaparticipacion1")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idactaparticipacion1", referencedColumnName="idactaparticipacion1")
+     * })
+     */
+    private $idactaparticipacion1;
+
+    /**
+     * @var \principal\principalBundle\Entity\Pliegom
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Pliegom")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idpliegom", referencedColumnName="idpliegom")
+     * })
+     */
+    private $idpliegom;
+
+    /**
+     * @var \principal\principalBundle\Entity\Solicitud
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Solicitud")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idsolicitud", referencedColumnName="idsolicitud")
+     * })
+     */
+    private $idsolicitud;
+
+
+}
+

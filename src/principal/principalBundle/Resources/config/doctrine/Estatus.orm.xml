@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="principal\principalBundle\Entity\Estatus" table="estatus">
+    <indexes>
+      <index name="fk_estatus_tipoestatus1_idx" columns="idtipoestatus"/>
+      <index name="fk_estatus_solicitud1_idx" columns="idsolicitud"/>
+    </indexes>
+    <id name="idestatus" type="integer" column="idestatus">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="observacion" type="text" column="observacion" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fechaestatus" type="date" column="fechaestatus" nullable="true"/>
+    <field name="puntero" type="boolean" column="puntero" nullable="true">
+      <options>
+        <option name="comment">puntero para saber que estatus es el actual, cuando tenga 1 es el estatus es el actualizado, cuando tenga 0 el estatus fenecio pero queda en el historico de los estus</option>
+      </options>
+    </field>
+    <many-to-one field="idsolicitud" target-entity="Solicitud" fetch="LAZY">
+      <join-columns>
+        <join-column name="idsolicitud" referenced-column-name="idsolicitud"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idtipoestatus" target-entity="Tipoestatus" fetch="LAZY">
+      <join-columns>
+        <join-column name="idtipoestatus" referenced-column-name="idtipoestatus"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

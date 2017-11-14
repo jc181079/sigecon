@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="principal\principalBundle\Entity\Dispdetalle" table="dispdetalle">
+    <indexes>
+      <index name="fk_dispdetalle_fuente1_idx" columns="fuente"/>
+      <index name="fk_dispdetalle_solicitud1_idx" columns="solicitud"/>
+    </indexes>
+    <id name="iddispdetalle" type="integer" column="iddispdetalle">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="numerop" type="string" column="numerop" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="denominacionp" type="string" column="denominacionp" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="montop" type="decimal" column="montop" precision="10" scale="2" nullable="true"/>
+    <many-to-one field="fuente" target-entity="Fuente" fetch="LAZY">
+      <join-columns>
+        <join-column name="fuente" referenced-column-name="idfuente"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="solicitud" target-entity="Solicitud" fetch="LAZY">
+      <join-columns>
+        <join-column name="solicitud" referenced-column-name="idsolicitud"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

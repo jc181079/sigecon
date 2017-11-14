@@ -1,0 +1,63 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Evamuestra
+ *
+ * @ORM\Table(name="evamuestra", indexes={@ORM\Index(name="fk_evamuestra_pliegom1_idx", columns={"idpliegom"}), @ORM\Index(name="fk_evamuestra_empresas1_idx", columns={"idempresas"}), @ORM\Index(name="fk_evamuestra_solicitud1_idx", columns={"idsolicitud"})})
+ * @ORM\Entity
+ */
+class Evamuestra
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="resultado", type="integer", nullable=true)
+     */
+    private $resultado;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idevamuestra", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idevamuestra;
+
+    /**
+     * @var \principal\principalBundle\Entity\Empresas
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Empresas")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idempresas", referencedColumnName="idempresas")
+     * })
+     */
+    private $idempresas;
+
+    /**
+     * @var \principal\principalBundle\Entity\Pliegom
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Pliegom")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idpliegom", referencedColumnName="idpliegom")
+     * })
+     */
+    private $idpliegom;
+
+    /**
+     * @var \principal\principalBundle\Entity\Solicitud
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Solicitud")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idsolicitud", referencedColumnName="idsolicitud")
+     * })
+     */
+    private $idsolicitud;
+
+
+}
+

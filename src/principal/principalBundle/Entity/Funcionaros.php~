@@ -1,0 +1,54 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Funcionaros
+ *
+ * @ORM\Table(name="funcionaros")
+ * @ORM\Entity
+ */
+class Funcionaros
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombrefun", type="string", length=45, nullable=true)
+     */
+    private $nombrefun;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="apellidofun", type="string", length=45, nullable=true)
+     */
+    private $apellidofun;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefonofun", type="string", length=45, nullable=true)
+     */
+    private $telefonofun;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="correofun", type="string", length=45, nullable=true)
+     */
+    private $correofun;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idfuncionaros", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idfuncionaros;
+
+
+}
+

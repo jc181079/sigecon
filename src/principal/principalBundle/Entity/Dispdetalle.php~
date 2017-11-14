@@ -1,0 +1,67 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Dispdetalle
+ *
+ * @ORM\Table(name="dispdetalle", indexes={@ORM\Index(name="fk_dispdetalle_fuente1_idx", columns={"fuente"}), @ORM\Index(name="fk_dispdetalle_solicitud1_idx", columns={"solicitud"})})
+ * @ORM\Entity
+ */
+class Dispdetalle
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numerop", type="string", length=45, nullable=true)
+     */
+    private $numerop;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="denominacionp", type="string", length=45, nullable=true)
+     */
+    private $denominacionp;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="montop", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $montop;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="iddispdetalle", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $iddispdetalle;
+
+    /**
+     * @var \principal\principalBundle\Entity\Fuente
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Fuente")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="fuente", referencedColumnName="idfuente")
+     * })
+     */
+    private $fuente;
+
+    /**
+     * @var \principal\principalBundle\Entity\Solicitud
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Solicitud")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="solicitud", referencedColumnName="idsolicitud")
+     * })
+     */
+    private $solicitud;
+
+
+}
+

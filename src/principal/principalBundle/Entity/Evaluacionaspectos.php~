@@ -1,0 +1,84 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Evaluacionaspectos
+ *
+ * @ORM\Table(name="evaluacionaspectos", indexes={@ORM\Index(name="fk_evaluacionaspectos_pliegoaspectos1_idx", columns={"idpliegoaspectos"}), @ORM\Index(name="fk_evaluacionaspectos_empresas1_idx", columns={"empresas_idempresas"}), @ORM\Index(name="fk_evaluacionaspectos_solicitud1_idx", columns={"idsolicitud"})})
+ * @ORM\Entity
+ */
+class Evaluacionaspectos
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="resultado", type="integer", nullable=true)
+     */
+    private $resultado;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="califcualitativa", type="string", length=45, nullable=true)
+     */
+    private $califcualitativa;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="puntcualitativa", type="string", length=45, nullable=true)
+     */
+    private $puntcualitativa;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="resultcualitativo", type="string", length=45, nullable=true)
+     */
+    private $resultcualitativo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idevaluacionaspectos", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idevaluacionaspectos;
+
+    /**
+     * @var \principal\principalBundle\Entity\Empresas
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Empresas")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="empresas_idempresas", referencedColumnName="idempresas")
+     * })
+     */
+    private $empresasempresas;
+
+    /**
+     * @var \principal\principalBundle\Entity\Pliegoaspectos
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Pliegoaspectos")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idpliegoaspectos", referencedColumnName="idpliegoaspectos")
+     * })
+     */
+    private $idpliegoaspectos;
+
+    /**
+     * @var \principal\principalBundle\Entity\Solicitud
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Solicitud")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idsolicitud", referencedColumnName="idsolicitud")
+     * })
+     */
+    private $idsolicitud;
+
+
+}
+

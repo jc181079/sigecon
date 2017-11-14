@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="principal\principalBundle\Entity\Analisisfin" table="analisisfin">
+    <indexes>
+      <index name="fk_analisisfin_empresas1_idx" columns="idempresas"/>
+      <index name="fk_analisisfin_solicitud1_idx" columns="idsolicitud"/>
+    </indexes>
+    <id name="idanalisisfin" type="integer" column="idanalisisfin">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="periodo" type="integer" column="periodo" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">eño fiscal evaluado</option>
+      </options>
+    </field>
+    <field name="cxc" type="decimal" column="cxc" precision="10" scale="2" nullable="true">
+      <options>
+        <option name="comment">cuenta por cobrar</option>
+      </options>
+    </field>
+    <field name="ac" type="decimal" column="ac" precision="10" scale="2" nullable="true">
+      <options>
+        <option name="comment">activo circulante</option>
+      </options>
+    </field>
+    <field name="at" type="decimal" column="at" precision="10" scale="2" nullable="true">
+      <options>
+        <option name="comment">activo total</option>
+      </options>
+    </field>
+    <field name="pc" type="decimal" column="pc" precision="10" scale="2" nullable="true">
+      <options>
+        <option name="comment">pasivo circulante</option>
+      </options>
+    </field>
+    <field name="pt" type="decimal" column="pt" precision="10" scale="2" nullable="true">
+      <options>
+        <option name="comment">pasivo total</option>
+      </options>
+    </field>
+    <field name="p" type="decimal" column="p" precision="10" scale="2" nullable="true">
+      <options>
+        <option name="comment">patrimonio</option>
+      </options>
+    </field>
+    <field name="it" type="decimal" column="it" precision="10" scale="2" nullable="true">
+      <options>
+        <option name="comment">ingresos totales</option>
+      </options>
+    </field>
+    <field name="un" type="decimal" column="un" precision="10" scale="2" nullable="true">
+      <options>
+        <option name="comment">utilidad neta</option>
+      </options>
+    </field>
+    <field name="s" type="decimal" column="s" precision="10" scale="2" nullable="true">
+      <options>
+        <option name="comment">solvencia</option>
+      </options>
+    </field>
+    <field name="su" type="decimal" column="su" precision="10" scale="2" nullable="true">
+      <options>
+        <option name="comment">Solvencia ajuste</option>
+      </options>
+    </field>
+    <field name="rotcxc" type="decimal" column="rotcxc" precision="10" scale="2" nullable="true">
+      <options>
+        <option name="comment">ROTACION DE CUENTAS POR COBRAR</option>
+      </options>
+    </field>
+    <field name="rotcxcu" type="decimal" column="rotcxcu" precision="10" scale="2" nullable="true">
+      <options>
+        <option name="comment">rotacion de cuentas por cobrar ajuste</option>
+      </options>
+    </field>
+    <field name="redsact" type="decimal" column="redsact" precision="10" scale="2" nullable="true">
+      <options>
+        <option name="comment">rendimiento s/act</option>
+      </options>
+    </field>
+    <field name="redsactu" type="decimal" column="redsactu" precision="10" scale="2" nullable="true"/>
+    <field name="rentpatri" type="decimal" column="rentpatri" precision="10" scale="2" nullable="true">
+      <options>
+        <option name="comment">rendimiento patrimonial</option>
+      </options>
+    </field>
+    <field name="rentpatriu" type="decimal" column="rentpatriu" precision="10" scale="2" nullable="true">
+      <options>
+        <option name="comment">rendimiento patrimonial</option>
+      </options>
+    </field>
+    <field name="endeud" type="decimal" column="endeud" precision="10" scale="2" nullable="true">
+      <options>
+        <option name="comment">endeudamiento</option>
+      </options>
+    </field>
+    <field name="endeudu" type="decimal" column="endeudu" precision="10" scale="2" nullable="true">
+      <options>
+        <option name="comment">endeudamiento ajuste</option>
+      </options>
+    </field>
+    <field name="capnet" type="decimal" column="capnet" precision="10" scale="2" nullable="true"/>
+    <field name="factrend" type="decimal" column="factrend" precision="10" scale="2" nullable="true"/>
+    <field name="vipc" type="decimal" column="vipc" precision="10" scale="2" nullable="true"/>
+    <field name="cfec" type="decimal" column="cfec" precision="10" scale="2" nullable="true"/>
+    <field name="nfec" type="decimal" column="nfec" precision="10" scale="2" nullable="true"/>
+    <many-to-one field="idempresas" target-entity="Empresas" fetch="LAZY">
+      <join-columns>
+        <join-column name="idempresas" referenced-column-name="idempresas"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idsolicitud" target-entity="Solicitud" fetch="LAZY">
+      <join-columns>
+        <join-column name="idsolicitud" referenced-column-name="idsolicitud"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

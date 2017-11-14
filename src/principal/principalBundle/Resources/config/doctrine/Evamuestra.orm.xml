@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="principal\principalBundle\Entity\Evamuestra" table="evamuestra">
+    <indexes>
+      <index name="fk_evamuestra_pliegom1_idx" columns="idpliegom"/>
+      <index name="fk_evamuestra_empresas1_idx" columns="idempresas"/>
+      <index name="fk_evamuestra_solicitud1_idx" columns="idsolicitud"/>
+    </indexes>
+    <id name="idevamuestra" type="integer" column="idevamuestra">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="resultado" type="integer" column="resultado" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="idempresas" target-entity="Empresas" fetch="LAZY">
+      <join-columns>
+        <join-column name="idempresas" referenced-column-name="idempresas"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idpliegom" target-entity="Pliegom" fetch="LAZY">
+      <join-columns>
+        <join-column name="idpliegom" referenced-column-name="idpliegom"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idsolicitud" target-entity="Solicitud" fetch="LAZY">
+      <join-columns>
+        <join-column name="idsolicitud" referenced-column-name="idsolicitud"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

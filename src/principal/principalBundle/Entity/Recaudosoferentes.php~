@@ -1,0 +1,68 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Recaudosoferentes
+ *
+ * @ORM\Table(name="recaudosoferentes")
+ * @ORM\Entity
+ */
+class Recaudosoferentes
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombredocumento", type="string", length=100, nullable=true)
+     */
+    private $nombredocumento;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="definicion", type="text", nullable=true)
+     */
+    private $definicion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipodocumento", type="string", length=6, nullable=true)
+     */
+    private $tipodocumento;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="puntajemin", type="integer", nullable=true)
+     */
+    private $puntajemin;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="puntajemed", type="integer", nullable=true)
+     */
+    private $puntajemed;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="puntajemax", type="integer", nullable=true)
+     */
+    private $puntajemax;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idrecaudos", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idrecaudos;
+
+
+}
+

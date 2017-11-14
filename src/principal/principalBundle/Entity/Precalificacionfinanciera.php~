@@ -1,0 +1,70 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Precalificacionfinanciera
+ *
+ * @ORM\Table(name="precalificacionfinanciera", indexes={@ORM\Index(name="fk_precalificacionfinanciera_empresas1_idx", columns={"idempresas"}), @ORM\Index(name="fk_precalificacionfinanciera_solicitud1_idx", columns={"idsolicitud"}), @ORM\Index(name="fk_precalificacionfinanciera_libroproceso1_idx", columns={"idlibroproceso"})})
+ * @ORM\Entity
+ */
+class Precalificacionfinanciera
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cfec", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $cfec;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nfec", type="string", length=7, nullable=true)
+     */
+    private $nfec;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idprecalificacionfinanciera", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idprecalificacionfinanciera;
+
+    /**
+     * @var \principal\principalBundle\Entity\Empresas
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Empresas")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idempresas", referencedColumnName="idempresas")
+     * })
+     */
+    private $idempresas;
+
+    /**
+     * @var \principal\principalBundle\Entity\Libroproceso
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Libroproceso")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idlibroproceso", referencedColumnName="idlibroproceso")
+     * })
+     */
+    private $idlibroproceso;
+
+    /**
+     * @var \principal\principalBundle\Entity\Solicitud
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Solicitud")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idsolicitud", referencedColumnName="idsolicitud")
+     * })
+     */
+    private $idsolicitud;
+
+
+}
+

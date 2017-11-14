@@ -1,0 +1,60 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Comitecontrataciones
+ *
+ * @ORM\Table(name="comitecontrataciones", indexes={@ORM\Index(name="fk_comitecontrataciones_funcionaros1_idx", columns={"idfuncionaros"}), @ORM\Index(name="fk_comitecontrataciones_comision1_idx", columns={"idcomision"})})
+ * @ORM\Entity
+ */
+class Comitecontrataciones
+{
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="activo", type="boolean", nullable=true)
+     */
+    private $activo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipomiembro", type="string", length=9, nullable=true)
+     */
+    private $tipomiembro;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idcomisioncontrataciones", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idcomisioncontrataciones;
+
+    /**
+     * @var \principal\principalBundle\Entity\Comision
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Comision")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idcomision", referencedColumnName="idcomision")
+     * })
+     */
+    private $idcomision;
+
+    /**
+     * @var \principal\principalBundle\Entity\Funcionaros
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Funcionaros")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idfuncionaros", referencedColumnName="idfuncionaros")
+     * })
+     */
+    private $idfuncionaros;
+
+
+}
+

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="principal\principalBundle\Entity\Garantiaoferta" table="garantiaoferta">
+    <indexes>
+      <index name="fk_garantiaoferta_empresas1_idx" columns="idempresas"/>
+      <index name="fk_garantiaoferta_pliego1_idx" columns="idpliego"/>
+      <index name="fk_garantiaoferta_solicitud1_idx" columns="idsolicitud"/>
+    </indexes>
+    <id name="idgarantiaoferta" type="integer" column="idgarantiaoferta">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="emisor" type="string" column="emisor" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">nombre del banco o aseguradora que emitio la garantia</option>
+      </options>
+    </field>
+    <field name="monto" type="decimal" column="monto" precision="10" scale="2" nullable="true"/>
+    <field name="tipogarantia" type="string" column="tipogarantia" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Cheque de Gerencia
+Cheque de la Empresa
+Fianza de Licitacion</option>
+      </options>
+    </field>
+    <field name="codigogarantia" type="string" column="codigogarantia" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="codigo" type="string" column="codigo" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="enteemisor" type="string" column="enteemisor" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="montogarantia" type="decimal" column="montogarantia" precision="10" scale="2" nullable="true"/>
+    <many-to-one field="idempresas" target-entity="Empresas" fetch="LAZY">
+      <join-columns>
+        <join-column name="idempresas" referenced-column-name="idempresas"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idpliego" target-entity="Pliego" fetch="LAZY">
+      <join-columns>
+        <join-column name="idpliego" referenced-column-name="idpliego"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idsolicitud" target-entity="Solicitud" fetch="LAZY">
+      <join-columns>
+        <join-column name="idsolicitud" referenced-column-name="idsolicitud"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="principal\principalBundle\Entity\Solicitud" table="solicitud">
+    <indexes>
+      <index name="fk_solicitud_entesolicitante_idx" columns="entesolicitante"/>
+      <index name="fk_solicitud_usuarios1_idx" columns="usuarios_idusuarios"/>
+    </indexes>
+    <id name="idsolicitud" type="integer" column="idsolicitud">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="descripcion" type="text" column="descripcion" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="objeto" type="text" column="objeto" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fecha" type="date" column="fecha" nullable="true"/>
+    <field name="adjudicacion" type="string" column="adjudicacion" length="7" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">parcial o total</option>
+      </options>
+    </field>
+    <field name="actividad" type="string" column="actividad" length="8" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">bienes, servicios u obra</option>
+      </options>
+    </field>
+    <field name="procedencia" type="string" column="procedencia" length="12" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">proyecto o requerimiento</option>
+      </options>
+    </field>
+    <field name="presupuestobase" type="decimal" column="presupuestobase" precision="10" scale="2" nullable="true"/>
+    <field name="disponibilidadtotal" type="decimal" column="disponibilidadtotal" precision="10" scale="2" nullable="true"/>
+    <field name="modalidadestimada" type="string" column="modalidadestimada" length="7" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">abierto
+cerrado</option>
+      </options>
+    </field>
+    <field name="fecharecibida" type="date" column="fecharecibida" nullable="true"/>
+    <field name="nroofico" type="string" column="nroofico" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fechaoficio" type="date" column="fechaoficio" nullable="true"/>
+    <field name="periodosol" type="integer" column="periodosol" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">periodo o año de la solicitud</option>
+      </options>
+    </field>
+    <many-to-one field="entesolicitante" target-entity="Entesolicitante" fetch="LAZY">
+      <join-columns>
+        <join-column name="entesolicitante" referenced-column-name="identesolicitante"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="usuariosusuarios" target-entity="Usuarios" fetch="LAZY">
+      <join-columns>
+        <join-column name="usuarios_idusuarios" referenced-column-name="idusuarios"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

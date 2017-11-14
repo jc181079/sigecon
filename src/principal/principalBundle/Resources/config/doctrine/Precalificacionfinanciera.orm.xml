@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="principal\principalBundle\Entity\Precalificacionfinanciera" table="precalificacionfinanciera">
+    <indexes>
+      <index name="fk_precalificacionfinanciera_empresas1_idx" columns="idempresas"/>
+      <index name="fk_precalificacionfinanciera_solicitud1_idx" columns="idsolicitud"/>
+      <index name="fk_precalificacionfinanciera_libroproceso1_idx" columns="idlibroproceso"/>
+    </indexes>
+    <id name="idprecalificacionfinanciera" type="integer" column="idprecalificacionfinanciera">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="cfec" type="decimal" column="cfec" precision="10" scale="2" nullable="true"/>
+    <field name="nfec" type="string" column="nfec" length="7" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">nives financiero estimado de contratacion</option>
+      </options>
+    </field>
+    <many-to-one field="idempresas" target-entity="Empresas" fetch="LAZY">
+      <join-columns>
+        <join-column name="idempresas" referenced-column-name="idempresas"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idlibroproceso" target-entity="Libroproceso" fetch="LAZY">
+      <join-columns>
+        <join-column name="idlibroproceso" referenced-column-name="idlibroproceso"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idsolicitud" target-entity="Solicitud" fetch="LAZY">
+      <join-columns>
+        <join-column name="idsolicitud" referenced-column-name="idsolicitud"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

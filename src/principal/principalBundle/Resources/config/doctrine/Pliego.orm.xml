@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="principal\principalBundle\Entity\Pliego" table="pliego">
+    <indexes>
+      <index name="fk_pliego_libroproceso1_idx" columns="libroproceso"/>
+      <index name="fk_pliego_solicitud1_idx" columns="idsolicitud"/>
+    </indexes>
+    <id name="idpliego" type="integer" column="idpliego">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="frpinicio" type="date" column="frpinicio" nullable="true">
+      <options>
+        <option name="comment">fecha de retiro de pliego inicio</option>
+      </options>
+    </field>
+    <field name="frpfin" type="date" column="frpfin" nullable="true">
+      <options>
+        <option name="comment">fecha de retiro de pliego fin</option>
+      </options>
+    </field>
+    <field name="fapinicio" type="date" column="fapinicio" nullable="true">
+      <options>
+        <option name="comment">fecha de aclaratoria de pliego inicio</option>
+      </options>
+    </field>
+    <field name="fapfin" type="date" column="fapfin" nullable="true">
+      <options>
+        <option name="comment">fecha de claratoria fin</option>
+      </options>
+    </field>
+    <field name="frap" type="date" column="frap" nullable="true">
+      <options>
+        <option name="comment">fecha respuesta aclaratoria pliego</option>
+      </options>
+    </field>
+    <field name="hrap" type="string" column="hrap" length="7" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fvt" type="date" column="fvt" nullable="true">
+      <options>
+        <option name="comment">fecha de la visita tecnica</option>
+      </options>
+    </field>
+    <field name="lvt" type="text" column="lvt" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">lugar de la visita tecnica</option>
+      </options>
+    </field>
+    <field name="hvt" type="string" column="hvt" length="7" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="prvt" type="string" column="prvt" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">persona responsable visita tecnica</option>
+      </options>
+    </field>
+    <field name="tprvt" type="string" column="tprvt" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">telefono responsable vista tecnica</option>
+      </options>
+    </field>
+    <field name="hrpam" type="string" column="hrpam" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">horario retiro de pliego am</option>
+      </options>
+    </field>
+    <field name="hrppm" type="string" column="hrppm" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">horario retiro de pliego pm</option>
+      </options>
+    </field>
+    <field name="fap" type="date" column="fap" nullable="true">
+      <options>
+        <option name="comment">fecha del acto poublico</option>
+      </options>
+    </field>
+    <field name="hrsap" type="string" column="hrsap" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">horario de recepcion de sobres para actos publicos</option>
+      </options>
+    </field>
+    <field name="hasap" type="string" column="hasap" length="7" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">hora de apertura de sobres acto publico</option>
+      </options>
+    </field>
+    <field name="mecanismo" type="text" column="mecanismo" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="pfmin" type="integer" column="pfmin" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">puntaje financiero minimo</option>
+      </options>
+    </field>
+    <field name="pfmax" type="integer" column="pfmax" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">puntaje financiero maximo</option>
+      </options>
+    </field>
+    <field name="ptmin" type="integer" column="ptmin" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">puntaje tecnico minimo</option>
+      </options>
+    </field>
+    <field name="ptmax" type="integer" column="ptmax" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">puntaje tecnico maximo</option>
+      </options>
+    </field>
+    <many-to-one field="libroproceso" target-entity="Libroproceso" fetch="LAZY">
+      <join-columns>
+        <join-column name="libroproceso" referenced-column-name="idlibroproceso"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idsolicitud" target-entity="Solicitud" fetch="LAZY">
+      <join-columns>
+        <join-column name="idsolicitud" referenced-column-name="idsolicitud"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
