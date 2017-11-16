@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Permisologia
  *
- * @ORM\Table(name="permisologia", indexes={@ORM\Index(name="fk_permisologia_modulos1_idx", columns={"idmodulos"})})
+ * @ORM\Table(name="permisologia", indexes={@ORM\Index(name="fk_permisologia_modulos1_idx", columns={"idmodulos"}), @ORM\Index(name="fk_permisologia_perfil1_idx", columns={"idperfil"})})
  * @ORM\Entity
  */
 class Permisologia
@@ -58,6 +58,16 @@ class Permisologia
      * })
      */
     private $idmodulos;
+
+    /**
+     * @var \principal\principalBundle\Entity\Perfil
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Perfil")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idperfil", referencedColumnName="idperfil")
+     * })
+     */
+    private $idperfil;
 
 
 
@@ -189,5 +199,29 @@ class Permisologia
     public function getIdmodulos()
     {
         return $this->idmodulos;
+    }
+
+    /**
+     * Set idperfil
+     *
+     * @param \principal\principalBundle\Entity\Perfil $idperfil
+     *
+     * @return Permisologia
+     */
+    public function setIdperfil(\principal\principalBundle\Entity\Perfil $idperfil = null)
+    {
+        $this->idperfil = $idperfil;
+
+        return $this;
+    }
+
+    /**
+     * Get idperfil
+     *
+     * @return \principal\principalBundle\Entity\Perfil
+     */
+    public function getIdperfil()
+    {
+        return $this->idperfil;
     }
 }

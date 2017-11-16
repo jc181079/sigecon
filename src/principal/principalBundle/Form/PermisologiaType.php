@@ -13,7 +13,7 @@ class PermisologiaType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('incluir')->add('consultar')->add('modificar')->add('eliminar')->add('idmodulos');
+        $builder->add('incluir')->add('consultar')->add('modificar')->add('eliminar')->add('idmodulos')->add('idperfil');
     }
     
     /**

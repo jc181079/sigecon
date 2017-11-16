@@ -39,7 +39,7 @@ class ModulosController extends Controller
      */
     public function newAction(Request $request)
     {
-        $modulo = new Modulo();
+        $modulo = new Modulos();
         $form = $this->createForm('principal\principalBundle\Form\ModulosType', $modulo);
         $form->handleRequest($request);
 

@@ -20,28 +20,28 @@
             </tr>
         </thead>
         <tbody>
-        {% for modulo in modulos %}
-            <tr>
-                <td><a href="{{ path('modulos_show', { 'idmodulos': modulo.idmodulos }) }}">{{ modulo.nommodulo }}</a></td>
-                <td>{{ modulo.observacionmod }}</td>                
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('modulos_show', { 'idmodulos': modulo.idmodulos }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('modulos_edit', { 'idmodulos': modulo.idmodulos }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
+        {% if modulos %}
+                {% for modulo in modulos %}
+                    <tr>
+                        <td><a href="{{ path('modulos_show', { 'idmodulos': modulo.idmodulos }) }}">{{ modulo.nommodulo }}</a></td>
+                        <td>{{ modulo.observacionmod }}</td>                
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('modulos_show', { 'idmodulos': modulo.idmodulos }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('modulos_edit', { 'idmodulos': modulo.idmodulos }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+        {% else %}
+                     <tr >
+                         <td colspan="5"><div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-exclamation-sign"></span> No hay regiastros en este modulo por los momentos..</div></td>
+                     </tr>
+            {% endif%}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('modulos_new') }}">Create a new modulo</a>
-        </li>
-    </ul>
 {% endblock %}

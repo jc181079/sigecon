@@ -3,6 +3,7 @@
   <entity name="principal\principalBundle\Entity\Permisologia" table="permisologia">
     <indexes>
       <index name="fk_permisologia_modulos1_idx" columns="idmodulos"/>
+      <index name="fk_permisologia_perfil1_idx" columns="idperfil"/>
     </indexes>
     <id name="idpermisologia" type="integer" column="idpermisologia">
       <generator strategy="IDENTITY"/>
@@ -14,6 +15,11 @@
     <many-to-one field="idmodulos" target-entity="Modulos" fetch="LAZY">
       <join-columns>
         <join-column name="idmodulos" referenced-column-name="idmodulos"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idperfil" target-entity="Perfil" fetch="LAZY">
+      <join-columns>
+        <join-column name="idperfil" referenced-column-name="idperfil"/>
       </join-columns>
     </many-to-one>
   </entity>

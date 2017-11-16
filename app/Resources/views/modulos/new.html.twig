@@ -1,16 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Modulo creation</h1>
-
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('modulos_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <div class="container">
+        <div class="jumbotron">
+                <div class="container">
+                    <h1><strong>.:Nuevo modulo</strong></h1>
+                    <p>aqui podra registrar la informacion basica de los funcionarios que trabajaran con el sistema o con la comision de contrataciones</p>                    
+                </div>
+        </div>
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <footer>
+                    <input class="btn btn-primary" type="submit" value="Guardar" /> | 
+                    <a class="btn btn-danger" href="{{ path('modulos_index') }}">Cancelar</a>
+                </footer>
+        {{ form_end(form) }}
+    </div>
 {% endblock %}

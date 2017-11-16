@@ -1,44 +1,51 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Funcionaro</h1>
+    <div class="container">
+        <div class="jumbotron">
+                <div class="container">
+                    <h1><strong>.:Consulta de funcionario </strong></h1>
+                    <p>Visualizacion de los datos de los funcionarios registrados en el sistema</p> 
+                    <p>solo podran tener acceso a modificar la informacion los usuarios con las permisologias adecuadas</p>                   
+                </div>
+        </div>
+        <table class="table table-bordered table-responsive">
+            <tbody>
+                <tr>
+                    <th>Nombrefun</th>
+                    <td>{{ funcionaro.nombrefun }}</td>
+                </tr>
+                <tr>
+                    <th>Apellidofun</th>
+                    <td>{{ funcionaro.apellidofun }}</td>
+                </tr>
+                <tr>
+                    <th>Telefonofun</th>
+                    <td>{{ funcionaro.telefonofun }}</td>
+                </tr>
+                <tr>
+                    <th>Correofun</th>
+                    <td>{{ funcionaro.correofun }}</td>
+                </tr>
+                <tr>
+                    <th>Idfuncionaros</th>
+                    <td>{{ funcionaro.idfuncionaros }}</td>
+                </tr>
+            </tbody>
+        </table>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Nombrefun</th>
-                <td>{{ funcionaro.nombrefun }}</td>
-            </tr>
-            <tr>
-                <th>Apellidofun</th>
-                <td>{{ funcionaro.apellidofun }}</td>
-            </tr>
-            <tr>
-                <th>Telefonofun</th>
-                <td>{{ funcionaro.telefonofun }}</td>
-            </tr>
-            <tr>
-                <th>Correofun</th>
-                <td>{{ funcionaro.correofun }}</td>
-            </tr>
-            <tr>
-                <th>Idfuncionaros</th>
-                <td>{{ funcionaro.idfuncionaros }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('funcionaros_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('funcionaros_edit', { 'idfuncionaros': funcionaro.idfuncionaros }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        <ul>
+            <li>
+                <a class="btn btn-default" href="{{ path('funcionaros_index') }}">Back to the list</a>
+            </li>
+            <li>
+                <a class="btn btn-primary" href="{{ path('funcionaros_edit', { 'idfuncionaros': funcionaro.idfuncionaros }) }}">Edit</a>
+            </li>
+            <li>
+                {{ form_start(delete_form) }}
+                    <input class="btn btn-danger" type="submit" value="Eliminar registro">
+                {{ form_end(delete_form) }}
+            </li>
+        </ul>
+    </div>
 {% endblock %}
