@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Modulos
  *
- * @ORM\Table(name="modulos", indexes={@ORM\Index(name="fk_modulos_perfil1_idx", columns={"perfil_idperfil"}), @ORM\Index(name="fk_modulos_usuarios1_idx", columns={"usuarios_idusuarios"})})
+ * @ORM\Table(name="modulos", indexes={@ORM\Index(name="fk_modulos_perfil1_idx", columns={"idperfil"})})
  * @ORM\Entity
  */
 class Modulos
@@ -40,20 +40,10 @@ class Modulos
      *
      * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Perfil")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="perfil_idperfil", referencedColumnName="idperfil")
+     *   @ORM\JoinColumn(name="idperfil", referencedColumnName="idperfil")
      * })
      */
-    private $perfilperfil;
-
-    /**
-     * @var \principal\principalBundle\Entity\Usuarios
-     *
-     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Usuarios")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="usuarios_idusuarios", referencedColumnName="idusuarios")
-     * })
-     */
-    private $usuariosusuarios;
+    private $idperfil;
 
 
 }

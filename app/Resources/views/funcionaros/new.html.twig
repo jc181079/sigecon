@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="jumbotron">
+                <div class="container">
+                    <h1><strong>.:Nuevo funcionario</strong></h1>
+                    <p>aqui podra registrar la informacion basica de los funcionarios que trabajaran con el sistema o con la comision de contrataciones</p>                    
+                </div>
+        </div>
+        {{ form_start(form) }}
+            {{ form_widget(form) }}            
+            <footer>
+                <input class="btn btn-primary" type="submit" value="Guardar" /> | 
+                <a class="btn btn-danger" href="{{ path('funcionaros_index') }}">Cancelar</a>
+            </footer>
+        {{ form_end(form) }}
+    </div>
+    
+{% endblock %}

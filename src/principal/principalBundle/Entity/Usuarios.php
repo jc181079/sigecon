@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Usuarios
  *
- * @ORM\Table(name="usuarios", indexes={@ORM\Index(name="fk_usuarios_funcionaros1_idx", columns={"funcionaros"})})
+ * @ORM\Table(name="usuarios", indexes={@ORM\Index(name="fk_usuarios_funcionaros1_idx", columns={"funcionaros"}), @ORM\Index(name="fk_usuarios_perfil1_idx", columns={"idperfil"})})
  * @ORM\Entity
  */
 class Usuarios
@@ -44,6 +44,16 @@ class Usuarios
      * })
      */
     private $funcionaros;
+
+    /**
+     * @var \principal\principalBundle\Entity\Perfil
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Perfil")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idperfil", referencedColumnName="idperfil")
+     * })
+     */
+    private $idperfil;
 
 
 
@@ -127,5 +137,29 @@ class Usuarios
     public function getFuncionaros()
     {
         return $this->funcionaros;
+    }
+
+    /**
+     * Set idperfil
+     *
+     * @param \principal\principalBundle\Entity\Perfil $idperfil
+     *
+     * @return Usuarios
+     */
+    public function setIdperfil(\principal\principalBundle\Entity\Perfil $idperfil = null)
+    {
+        $this->idperfil = $idperfil;
+
+        return $this;
+    }
+
+    /**
+     * Get idperfil
+     *
+     * @return \principal\principalBundle\Entity\Perfil
+     */
+    public function getIdperfil()
+    {
+        return $this->idperfil;
     }
 }

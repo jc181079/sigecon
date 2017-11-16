@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="jumbotron">
+                <div class="container">
+                    <h1><strong>.:Nuevo Perfil de Usuario</strong></h1>
+                    <p>aqui podra registrar los perfiles con que se podra trabajaran en el sistema </p>                    
+                </div>
+        </div>
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <footer>
+                <input class="btn btn-primary" type="submit" value="Guardar" /> | 
+                <a class="btn btn-danger" href="{{ path('perfil_index') }}">Cancelar</a>
+            </footer>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

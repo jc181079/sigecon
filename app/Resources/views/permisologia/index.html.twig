@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Permisologias list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Incluir</th>
+                <th>Consultar</th>
+                <th>Modificar</th>
+                <th>Eliminar</th>
+                <th>Idpermisologia</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for permisologium in permisologias %}
+            <tr>
+                <td><a href="{{ path('permisologia_show', { 'idpermisologia': permisologium.idpermisologia }) }}">{{ permisologium.incluir }}</a></td>
+                <td>{% if permisologium.consultar %}Yes{% else %}No{% endif %}</td>
+                <td>{% if permisologium.modificar %}Yes{% else %}No{% endif %}</td>
+                <td>{% if permisologium.eliminar %}Yes{% else %}No{% endif %}</td>
+                <td>{{ permisologium.idpermisologia }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('permisologia_show', { 'idpermisologia': permisologium.idpermisologia }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('permisologia_edit', { 'idpermisologia': permisologium.idpermisologia }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('permisologia_new') }}">Create a new permisologium</a>
+        </li>
+    </ul>
+{% endblock %}

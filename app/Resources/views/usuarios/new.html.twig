@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="jumbotron">
+                <div class="container">
+                    <h1><strong>.:Creacion de usuario de sistema a funcionario</strong></h1>
+                    <p>aqui podra registrar el usuario del funcionario que trabajara con el sistema</p>                    
+                </div>
+        </div>
+
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <input class="btn btn-primary" type="submit" value="Guardar"  /> | 
+            <a class="btn btn-danger" href="{{ path('funcionaros_index') }}">Cancelar</a>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

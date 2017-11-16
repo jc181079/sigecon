@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="jumbotron">
+            <div class="container">
+                <h1><strong>.:Modulo de administracion de Perfiles de seguridad del sistema</strong></h1>
+                <p>aqui podra administrar los diferentes perfiles que tendran los usuarios del sistema</p>
+                <footer>
+                    <a class="btn btn-default" href="{{ path('perfil_new') }}">Ingresar nuevo registro</a>
+                </footer>
+            </div>
+        </div>
+        <table class="table table-bordered table-responsive">
+                <thead>
+                    <tr>
+                        <th>Nombre del perfil</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if perfils %}
+                        {% for perfil in perfils %}
+                            <tr>
+                                <td><a href="{{ path('perfil_show', { 'idperfil': perfil.idperfil }) }}">{{ perfil.nombreper }}</a></td>                    
+                                <td>
+                                    <ul>
+                                        <li>
+                                            <a href="{{ path('perfil_show', { 'idperfil': perfil.idperfil }) }}">show</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('perfil_edit', { 'idperfil': perfil.idperfil }) }}">edit</a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                         <tr >
+                             <td colspan="2"><div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-exclamation-sign"></span> No hay regiastros en este modulo por los momentos..</div></td>
+                         </tr>
+                    {% endif%}
+                </tbody>
+        </table>
+{% endblock %}

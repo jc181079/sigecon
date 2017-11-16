@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Permisologia
  *
- * @ORM\Table(name="permisologia", indexes={@ORM\Index(name="fk_permosologia_perfil1_idx", columns={"perfil"})})
+ * @ORM\Table(name="permisologia", indexes={@ORM\Index(name="fk_permisologia_modulos1_idx", columns={"idmodulos"})})
  * @ORM\Entity
  */
 class Permisologia
@@ -22,16 +22,16 @@ class Permisologia
     /**
      * @var boolean
      *
-     * @ORM\Column(name="modificar", type="boolean", nullable=true)
+     * @ORM\Column(name="consultar", type="boolean", nullable=true)
      */
-    private $modificar;
+    private $consultar;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="consultar", type="boolean", nullable=true)
+     * @ORM\Column(name="modificar", type="boolean", nullable=true)
      */
-    private $consultar;
+    private $modificar;
 
     /**
      * @var boolean
@@ -50,14 +50,14 @@ class Permisologia
     private $idpermisologia;
 
     /**
-     * @var \principal\principalBundle\Entity\Perfil
+     * @var \principal\principalBundle\Entity\Modulos
      *
-     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Perfil")
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Modulos")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="perfil", referencedColumnName="idperfil")
+     *   @ORM\JoinColumn(name="idmodulos", referencedColumnName="idmodulos")
      * })
      */
-    private $perfil;
+    private $idmodulos;
 
 
 
@@ -86,30 +86,6 @@ class Permisologia
     }
 
     /**
-     * Set modificar
-     *
-     * @param boolean $modificar
-     *
-     * @return Permisologia
-     */
-    public function setModificar($modificar)
-    {
-        $this->modificar = $modificar;
-
-        return $this;
-    }
-
-    /**
-     * Get modificar
-     *
-     * @return boolean
-     */
-    public function getModificar()
-    {
-        return $this->modificar;
-    }
-
-    /**
      * Set consultar
      *
      * @param boolean $consultar
@@ -131,6 +107,30 @@ class Permisologia
     public function getConsultar()
     {
         return $this->consultar;
+    }
+
+    /**
+     * Set modificar
+     *
+     * @param boolean $modificar
+     *
+     * @return Permisologia
+     */
+    public function setModificar($modificar)
+    {
+        $this->modificar = $modificar;
+
+        return $this;
+    }
+
+    /**
+     * Get modificar
+     *
+     * @return boolean
+     */
+    public function getModificar()
+    {
+        return $this->modificar;
     }
 
     /**
@@ -168,26 +168,26 @@ class Permisologia
     }
 
     /**
-     * Set perfil
+     * Set idmodulos
      *
-     * @param \principal\principalBundle\Entity\Perfil $perfil
+     * @param \principal\principalBundle\Entity\Modulos $idmodulos
      *
      * @return Permisologia
      */
-    public function setPerfil(\principal\principalBundle\Entity\Perfil $perfil = null)
+    public function setIdmodulos(\principal\principalBundle\Entity\Modulos $idmodulos = null)
     {
-        $this->perfil = $perfil;
+        $this->idmodulos = $idmodulos;
 
         return $this;
     }
 
     /**
-     * Get perfil
+     * Get idmodulos
      *
-     * @return \principal\principalBundle\Entity\Perfil
+     * @return \principal\principalBundle\Entity\Modulos
      */
-    public function getPerfil()
+    public function getIdmodulos()
     {
-        return $this->perfil;
+        return $this->idmodulos;
     }
 }

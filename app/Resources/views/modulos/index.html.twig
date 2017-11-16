@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="jumbotron">
+            <div class="container">
+                <h1><strong>.:Modulo de administracion de Modulos del sistema</strong></h1>
+                <p>aqui podra administrar los modulos del sistema</p>
+                <footer>
+                    <a class="btn btn-default" href="{{ path('modulos_new') }}">Ingresar nuevo registro</a>
+                </footer>
+            </div>
+        </div>
+    <table class="table table-bordered table-responsive">
+        <thead>
+            <tr>
+                <th>Nombre del modulo</th>
+                <th>Observacion del Modulo</th>                
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for modulo in modulos %}
+            <tr>
+                <td><a href="{{ path('modulos_show', { 'idmodulos': modulo.idmodulos }) }}">{{ modulo.nommodulo }}</a></td>
+                <td>{{ modulo.observacionmod }}</td>                
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('modulos_show', { 'idmodulos': modulo.idmodulos }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('modulos_edit', { 'idmodulos': modulo.idmodulos }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('modulos_new') }}">Create a new modulo</a>
+        </li>
+    </ul>
+{% endblock %}

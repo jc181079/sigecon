@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Permisologium</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Incluir</th>
+                <td>{% if permisologium.incluir %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Consultar</th>
+                <td>{% if permisologium.consultar %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modificar</th>
+                <td>{% if permisologium.modificar %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Eliminar</th>
+                <td>{% if permisologium.eliminar %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Idpermisologia</th>
+                <td>{{ permisologium.idpermisologia }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('permisologia_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('permisologia_edit', { 'idpermisologia': permisologium.idpermisologia }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

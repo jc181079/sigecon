@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="jumbotron">
+                <div class="container">
+                    <h1><strong>.:Modificacion de funcionario </strong></h1>
+                    <p>aqui podra modificar el  funcionario que trabajara con el sistema</p>                    
+                </div>
+        </div>
+        {{ form_start(edit_form) }}
+            {{ form_widget(edit_form) }}
+            <input class="btn btn-primary" type="submit" value="Modificar" /> | 
+            <a class="btn btn-warning" href="{{ path('funcionaros_index') }}">Cancelar</a> 
+        {{ form_end(edit_form) }}
+
+        <ul>
+            <li>
+                {{ form_start(delete_form) }}
+                   <input class="btn btn-danger" type="submit" value="Delete">
+                {{ form_end(delete_form) }}
+            </li>
+        </ul>
+    </div>
+{% endblock %}

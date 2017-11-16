@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Modulo</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nommodulo</th>
+                <td>{{ modulo.nommodulo }}</td>
+            </tr>
+            <tr>
+                <th>Observacionmod</th>
+                <td>{{ modulo.observacionmod }}</td>
+            </tr>
+            <tr>
+                <th>Idmodulos</th>
+                <td>{{ modulo.idmodulos }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('modulos_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('modulos_edit', { 'idmodulos': modulo.idmodulos }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

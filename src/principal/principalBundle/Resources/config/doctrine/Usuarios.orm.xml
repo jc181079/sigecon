@@ -3,6 +3,7 @@
   <entity name="principal\principalBundle\Entity\Usuarios" table="usuarios">
     <indexes>
       <index name="fk_usuarios_funcionaros1_idx" columns="funcionaros"/>
+      <index name="fk_usuarios_perfil1_idx" columns="idperfil"/>
     </indexes>
     <id name="idusuarios" type="integer" column="idusuarios">
       <generator strategy="IDENTITY"/>
@@ -20,6 +21,11 @@
     <many-to-one field="funcionaros" target-entity="Funcionaros" fetch="LAZY">
       <join-columns>
         <join-column name="funcionaros" referenced-column-name="idfuncionaros"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idperfil" target-entity="Perfil" fetch="LAZY">
+      <join-columns>
+        <join-column name="idperfil" referenced-column-name="idperfil"/>
       </join-columns>
     </many-to-one>
   </entity>

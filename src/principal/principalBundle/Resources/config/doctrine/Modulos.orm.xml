@@ -2,8 +2,7 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="principal\principalBundle\Entity\Modulos" table="modulos">
     <indexes>
-      <index name="fk_modulos_perfil1_idx" columns="perfil_idperfil"/>
-      <index name="fk_modulos_usuarios1_idx" columns="usuarios_idusuarios"/>
+      <index name="fk_modulos_perfil1_idx" columns="idperfil"/>
     </indexes>
     <id name="idmodulos" type="integer" column="idmodulos">
       <generator strategy="IDENTITY"/>
@@ -18,14 +17,9 @@
         <option name="fixed"/>
       </options>
     </field>
-    <many-to-one field="perfilperfil" target-entity="Perfil" fetch="LAZY">
+    <many-to-one field="idperfil" target-entity="Perfil" fetch="LAZY">
       <join-columns>
-        <join-column name="perfil_idperfil" referenced-column-name="idperfil"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="usuariosusuarios" target-entity="Usuarios" fetch="LAZY">
-      <join-columns>
-        <join-column name="usuarios_idusuarios" referenced-column-name="idusuarios"/>
+        <join-column name="idperfil" referenced-column-name="idperfil"/>
       </join-columns>
     </many-to-one>
   </entity>

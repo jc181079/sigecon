@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Usuario</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Login</th>
+                <td>{{ usuario.login }}</td>
+            </tr>
+            <tr>
+                <th>Clave</th>
+                <td>{{ usuario.clave }}</td>
+            </tr>
+            <tr>
+                <th>Idusuarios</th>
+                <td>{{ usuario.idusuarios }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('usuarios_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('usuarios_edit', { 'idusuarios': usuario.idusuarios }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

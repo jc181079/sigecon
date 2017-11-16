@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Modulos
  *
- * @ORM\Table(name="modulos", indexes={@ORM\Index(name="fk_modulos_perfil1_idx", columns={"perfil_idperfil"}), @ORM\Index(name="fk_modulos_usuarios1_idx", columns={"usuarios_idusuarios"})})
+ * @ORM\Table(name="modulos", indexes={@ORM\Index(name="fk_modulos_perfil1_idx", columns={"idperfil"})})
  * @ORM\Entity
  */
 class Modulos
@@ -40,20 +40,10 @@ class Modulos
      *
      * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Perfil")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="perfil_idperfil", referencedColumnName="idperfil")
+     *   @ORM\JoinColumn(name="idperfil", referencedColumnName="idperfil")
      * })
      */
-    private $perfilperfil;
-
-    /**
-     * @var \principal\principalBundle\Entity\Usuarios
-     *
-     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Usuarios")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="usuarios_idusuarios", referencedColumnName="idusuarios")
-     * })
-     */
-    private $usuariosusuarios;
+    private $idperfil;
 
 
 
@@ -116,50 +106,26 @@ class Modulos
     }
 
     /**
-     * Set perfilperfil
+     * Set idperfil
      *
-     * @param \principal\principalBundle\Entity\Perfil $perfilperfil
+     * @param \principal\principalBundle\Entity\Perfil $idperfil
      *
      * @return Modulos
      */
-    public function setPerfilperfil(\principal\principalBundle\Entity\Perfil $perfilperfil = null)
+    public function setIdperfil(\principal\principalBundle\Entity\Perfil $idperfil = null)
     {
-        $this->perfilperfil = $perfilperfil;
+        $this->idperfil = $idperfil;
 
         return $this;
     }
 
     /**
-     * Get perfilperfil
+     * Get idperfil
      *
      * @return \principal\principalBundle\Entity\Perfil
      */
-    public function getPerfilperfil()
+    public function getIdperfil()
     {
-        return $this->perfilperfil;
-    }
-
-    /**
-     * Set usuariosusuarios
-     *
-     * @param \principal\principalBundle\Entity\Usuarios $usuariosusuarios
-     *
-     * @return Modulos
-     */
-    public function setUsuariosusuarios(\principal\principalBundle\Entity\Usuarios $usuariosusuarios = null)
-    {
-        $this->usuariosusuarios = $usuariosusuarios;
-
-        return $this;
-    }
-
-    /**
-     * Get usuariosusuarios
-     *
-     * @return \principal\principalBundle\Entity\Usuarios
-     */
-    public function getUsuariosusuarios()
-    {
-        return $this->usuariosusuarios;
+        return $this->idperfil;
     }
 }

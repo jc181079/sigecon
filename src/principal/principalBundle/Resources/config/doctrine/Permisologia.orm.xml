@@ -2,18 +2,18 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="principal\principalBundle\Entity\Permisologia" table="permisologia">
     <indexes>
-      <index name="fk_permosologia_perfil1_idx" columns="perfil"/>
+      <index name="fk_permisologia_modulos1_idx" columns="idmodulos"/>
     </indexes>
     <id name="idpermisologia" type="integer" column="idpermisologia">
       <generator strategy="IDENTITY"/>
     </id>
     <field name="incluir" type="boolean" column="incluir" nullable="true"/>
-    <field name="modificar" type="boolean" column="modificar" nullable="true"/>
     <field name="consultar" type="boolean" column="consultar" nullable="true"/>
+    <field name="modificar" type="boolean" column="modificar" nullable="true"/>
     <field name="eliminar" type="boolean" column="eliminar" nullable="true"/>
-    <many-to-one field="perfil" target-entity="Perfil" fetch="LAZY">
+    <many-to-one field="idmodulos" target-entity="Modulos" fetch="LAZY">
       <join-columns>
-        <join-column name="perfil" referenced-column-name="idperfil"/>
+        <join-column name="idmodulos" referenced-column-name="idmodulos"/>
       </join-columns>
     </many-to-one>
   </entity>

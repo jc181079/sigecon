@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Permisologia
  *
- * @ORM\Table(name="permisologia", indexes={@ORM\Index(name="fk_permosologia_perfil1_idx", columns={"perfil"})})
+ * @ORM\Table(name="permisologia", indexes={@ORM\Index(name="fk_permisologia_modulos1_idx", columns={"idmodulos"})})
  * @ORM\Entity
  */
 class Permisologia
@@ -22,16 +22,16 @@ class Permisologia
     /**
      * @var boolean
      *
-     * @ORM\Column(name="modificar", type="boolean", nullable=true)
+     * @ORM\Column(name="consultar", type="boolean", nullable=true)
      */
-    private $modificar;
+    private $consultar;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="consultar", type="boolean", nullable=true)
+     * @ORM\Column(name="modificar", type="boolean", nullable=true)
      */
-    private $consultar;
+    private $modificar;
 
     /**
      * @var boolean
@@ -50,14 +50,14 @@ class Permisologia
     private $idpermisologia;
 
     /**
-     * @var \principal\principalBundle\Entity\Perfil
+     * @var \principal\principalBundle\Entity\Modulos
      *
-     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Perfil")
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Modulos")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="perfil", referencedColumnName="idperfil")
+     *   @ORM\JoinColumn(name="idmodulos", referencedColumnName="idmodulos")
      * })
      */
-    private $perfil;
+    private $idmodulos;
 
 
 }
