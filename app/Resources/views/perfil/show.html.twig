@@ -4,8 +4,8 @@
     <div class="container">
         <div class="jumbotron">
                 <div class="container">
-                    <h1><strong>.:Consulta de funcionario </strong></h1>
-                    <p>Visualizacion de los datos de los funcionarios registrados en el sistema</p> 
+                    <h1><strong>.:Consulta de perfiles </strong></h1>
+                    <p>Visualizacion de los datos del perfil registrado en el sistema</p> 
                     <p>solo podran tener acceso a modificar la informacion los usuarios con las permisologias adecuadas</p>                   
                 </div>
         </div>
@@ -21,8 +21,11 @@
             </tr>
         </tbody>
     </table>
-
+    
     <ul>
+        <li>
+            <a class="btn btn-default" href="{{ path('permisologia_new',{ 'idperfil': perfil.idperfil }) }}">Permisologia</a>
+        </li>
         <li>
             <a class="btn btn-default" href="{{ path('perfil_index') }}">Volver</a>
         </li>

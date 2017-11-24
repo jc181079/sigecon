@@ -1,9 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Usuario</h1>
-
-    <table>
+   <div class="container">
+        <div class="jumbotron">
+                <div class="container">
+                    <h1><strong>.:Consulta de funcionario </strong></h1>
+                    <p>Visualizacion de los datos de los funcionarios registrados en el sistema</p> 
+                    <p>solo podran tener acceso a modificar la informacion los usuarios con las permisologias adecuadas</p>                   
+                </div>
+        </div>
+    <table class="table table-bordered table-responsive">
         <tbody>
             <tr>
                 <th>Login</th>
@@ -13,23 +19,19 @@
                 <th>Clave</th>
                 <td>{{ usuario.clave }}</td>
             </tr>
-            <tr>
-                <th>Idusuarios</th>
-                <td>{{ usuario.idusuarios }}</td>
-            </tr>
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('usuarios_index') }}">Back to the list</a>
+            <a class="btn btn-default" href="{{ path('usuarios_index') }}">Volver</a>
         </li>
         <li>
-            <a href="{{ path('usuarios_edit', { 'idusuarios': usuario.idusuarios }) }}">Edit</a>
+            <a class="btn btn-primary" href="{{ path('usuarios_edit', { 'idusuarios': usuario.idusuarios }) }}">Modificar</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input class="btn btn-danger" type="submit" value="Eliminar registro">
             {{ form_end(delete_form) }}
         </li>
     </ul>

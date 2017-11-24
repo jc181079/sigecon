@@ -5,7 +5,8 @@ namespace principal\principalBundle\Controller;
 use principal\principalBundle\Entity\Permisologia;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Permisologium controller.
@@ -34,19 +35,24 @@ class PermisologiaController extends Controller
     /**
      * Creates a new permisologium entity.
      *
-     * @Route("/new", name="permisologia_new")
+     * @Route("/new/{idperfil}", name="permisologia_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
     {
-        $permisologium = new Permisologium();
+        $permisologium = new Permisologia();
         $form = $this->createForm('principal\principalBundle\Form\PermisologiaType', $permisologium);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $perfil = $this->getDoctrine()
+                        ->getRepository('principalBundle:Perfil')
+                        ->findOneBy(array('idperfil' => $request->get('idperfil')));
+            $permisologium->setIdperfil($perfil);
             $em->persist($permisologium);
             $em->flush();
+
 
             return $this->redirectToRoute('permisologia_show', array('idpermisologia' => $permisologium->getIdpermisologia()));
         }
@@ -63,12 +69,14 @@ class PermisologiaController extends Controller
      * @Route("/{idpermisologia}", name="permisologia_show")
      * @Method("GET")
      */
-    public function showAction(Permisologia $permisologium)
+    public function showAction(Permisologia $permisologium,Request $request)
     {
         $deleteForm = $this->createDeleteForm($permisologium);
-
+        $url=$request->getPathInfo();//getBaseUrl();
+        $moduloURL=explode('/', $url);
         return $this->render('permisologia/show.html.twig', array(
             'permisologium' => $permisologium,
+            'x'=>$moduloURL[1],
             'delete_form' => $deleteForm->createView(),
         ));
     }

@@ -39,11 +39,11 @@
                                     <a href="{{ path('funcionaros_edit', { 'idfuncionaros': funcionaro.idfuncionaros }) }}">edit</a>
                                 </li>
                                 <li>
-                                    {% if funcionaro.login %}
-                                        <a href="{{ path('usuarios_edit', { 'idusuarios': funcionaro.idusuarios }) }}">usuario</a>
-                                    {% else %}
-                                        <a href="{{ path('usuarios_new') }}">usuario</a>
-                                    {% endif %}
+                                    {# if funcionaro.login #}
+                                    {# <a href="{{ path('usuarios_edit', { 'idusuarios': funcionaro.idusuarios }) }}">usuario</a>#}    
+                                    {# else #}
+                                    {# <a href="{{ path('usuarios_new') }}">usuario</a> #}    
+                                    {# endif #}
                                 </li>
                             </ul>
                         </td>

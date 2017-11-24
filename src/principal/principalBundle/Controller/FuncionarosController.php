@@ -33,11 +33,13 @@ class FuncionarosController extends Controller
             ' FROM principalBundle:Funcionaros fun INNER JOIN  principalBundle:Usuarios usu WITH fun.idfuncionaros=usu.funcionaros'.    
             ' WHERE fun.idfuncionaros=usu.funcionaros'     
             );
-        $runQuery=$consultaFuncionarios->getResult();
+        $funcionaros=$consultaFuncionarios->getResult();
+        //condicional que solo verifica si existe un funcionario con un usuario, si es nulo crea una nueva consulta de funcionario
+        //en caso de no ser nulo, es que existe un funcionario con un usuario asi que se muestra
+        if ($funcionaros==null) $funcionaros = $em->getRepository('principalBundle:Funcionaros')->findAll();
 
         return $this->render('funcionaros/index.html.twig', array(
-            //'funcionaros' => $funcionaros,
-            'funcionaros' => $runQuery,
+            'funcionaros' => $funcionaros,
         ));
     }
 
@@ -73,12 +75,19 @@ class FuncionarosController extends Controller
      * @Route("/{idfuncionaros}", name="funcionaros_show")
      * @Method("GET")
      */
-    public function showAction(Funcionaros $funcionaro)
+    public function showAction(Funcionaros $funcionaro,Request $request)
     {
         $deleteForm = $this->createDeleteForm($funcionaro);
-
+        $em = $this->getDoctrine()->getManager();
+        $consultaUsuarios=$em->createQuery(
+            ' SELECT usu.login,usu.idusuarios '.
+            ' FROM principalBundle:Usuarios usu '.    
+            ' WHERE usu.funcionaros='.  $funcionaro->getIdfuncionaros() .''   
+            );
+        $usuarios=$consultaUsuarios->getResult();
         return $this->render('funcionaros/show.html.twig', array(
             'funcionaro' => $funcionaro,
+            'usuarios' => $usuarios,
             'delete_form' => $deleteForm->createView(),
         ));
     }

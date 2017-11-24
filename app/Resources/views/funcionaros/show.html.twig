@@ -35,6 +35,23 @@
         </table>
 
         <ul>
+            {% if usuarios%}
+                <table class="table table-bordered table-responsive">
+                    <tbody>
+                        <tr>
+                            <th>Usuario</th>
+                            <td>{{ usuarios.login }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <li>
+                    <a class="btn btn-default" href="{{ path('usuarios_edit', { 'idfuncionaros': funcionaro.idfuncionaros }) }}">Modificar usuario</a>
+                </li>
+            {% else %}
+                <li>
+                    <a class="btn btn-default" href="{{ path('usuarios_new', { 'idfuncionaros': funcionaro.idfuncionaros }) }}">Crearle un usuario</a>
+                </li>
+            {% endif%}
             <li>
                 <a class="btn btn-default" href="{{ path('funcionaros_index') }}">Back to the list</a>
             </li>

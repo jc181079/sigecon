@@ -43,18 +43,18 @@ class UsuariosController extends Controller
         $usuario = new Usuarios();
         $form = $this->createForm('principal\principalBundle\Form\UsuariosType', $usuario);
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $funcionario = $this->getDoctrine()
-                    ->getRepository('principalBundle:Funcionaros')
-                    ->findOneBy(array('idfuncionaros' => $request->get('idfuncionaros')));
-            $usuario->setFuncionaros($funcionario);
-            $usuario->setClave(md5($request->get('clave')));
-            $em->persist($usuario);
-            $em->flush();
-
-            return $this->redirectToRoute('funcionaros_index');
+                $em = $this->getDoctrine()->getManager();
+                $funcionario = $this->getDoctrine()
+                        ->getRepository('principalBundle:Funcionaros')
+                        ->findOneBy(array('idfuncionaros' => $request->get('idfuncionaros')));
+                $usuario->setFuncionaros($funcionario);
+                $usuario->setClave(md5($request->get('clave')));
+                //$usuario->setIdperfil($request->get('idperfil'));
+                $em->persist($usuario);
+                $em->flush();
+                return $this->redirectToRoute('funcionaros_index');
         }
 
         return $this->render('usuarios/new.html.twig', array(
