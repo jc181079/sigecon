@@ -26,17 +26,17 @@ class FuncionarosController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        //$funcionaros = $em->getRepository('principalBundle:Funcionaros')->findAll();
+        $funcionaros = $em->getRepository('principalBundle:Funcionaros')->findAll();
         //$usuarios = $em->getRepository('principalBundle:Usuarios')->findById();
-        $consultaFuncionarios=$em->createQuery(
+        /*$consultaFuncionarios=$em->createQuery(
             ' SELECT fun.idfuncionaros,fun.nombrefun,fun.apellidofun,fun.telefonofun,fun.correofun,usu.login,usu.idusuarios '.
             ' FROM principalBundle:Funcionaros fun INNER JOIN  principalBundle:Usuarios usu WITH fun.idfuncionaros=usu.funcionaros'.    
             ' WHERE fun.idfuncionaros=usu.funcionaros'     
-            );
-        $funcionaros=$consultaFuncionarios->getResult();
+            );*/
+        //$funcionaros=$consultaFuncionarios->getResult();
         //condicional que solo verifica si existe un funcionario con un usuario, si es nulo crea una nueva consulta de funcionario
         //en caso de no ser nulo, es que existe un funcionario con un usuario asi que se muestra
-        if ($funcionaros==null) $funcionaros = $em->getRepository('principalBundle:Funcionaros')->findAll();
+        //if ($funcionaros==null) $funcionaros = $em->getRepository('principalBundle:Funcionaros')->findAll();
 
         return $this->render('funcionaros/index.html.twig', array(
             'funcionaros' => $funcionaros,

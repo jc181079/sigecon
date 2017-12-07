@@ -50,11 +50,12 @@ class UsuariosController extends Controller
                         ->getRepository('principalBundle:Funcionaros')
                         ->findOneBy(array('idfuncionaros' => $request->get('idfuncionaros')));
                 $usuario->setFuncionaros($funcionario);
-                $usuario->setClave(md5($request->get('clave')));
+                $usuario->setClave(md5($usuario->getClave()));
                 //$usuario->setIdperfil($request->get('idperfil'));
                 $em->persist($usuario);
                 $em->flush();
                 return $this->redirectToRoute('funcionaros_index');
+                
         }
 
         return $this->render('usuarios/new.html.twig', array(

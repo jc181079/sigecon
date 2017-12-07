@@ -23,15 +23,15 @@ class DefaultController extends Controller
     public function seguridadAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        // $consulta = $em->getRepository('principalBundle:Usuarios')
-        //    			->findBy(array('login' => $request->get('login'),'clave'=> md5($request->get('clave'))));
-         $query=$em->createQuery(
-            "SELECT usu.idusuarios, usu.login, f.idfuncionaros ". 
+        $consulta = $em->getRepository('principalBundle:Usuarios')
+            			->findBy(array('login' => $request->get('login'),'clave'=> md5($request->get('clave'))));
+        /* $query=$em->createQuery(
+            " SELECT usu.idusuarios, usu.login, f.idfuncionaros, f.nombrefun, usu.idperfil ". 
             " FROM principalBundle:Usuarios usu INNER JOIN principalBundle:Funcionaros f  ".
             " ".
-            "  WHERE usu.login='".$request->get('login')."' AND usu.clave='".md5($request->get('clave'))."' AND usu.funcionaros=f.idfuncionaros  ".
-            "  ");
-        $consulta=$query->getResult();
+            "  WHERE usu.login='".$request->get('login')."' AND usu.clave='".md5($request->get('clave'))."'   ".
+            "  AND f.idfuncionaros=usu.funcionaros");
+        $consulta=$query->getResult();*/
         if($consulta==null)
         {
         	/**
@@ -48,6 +48,11 @@ class DefaultController extends Controller
         }else
         {        	
             //inicio de bloque de session de usuario en el sistema
+            echo "SELECT usu.idusuarios, usu.login, f.idfuncionaros,f.nombrefun, usu.idperfil "; 
+            echo " FROM principalBundle:Usuarios usu INNER JOIN principalBundle:Funcionaros f  ";
+            echo " ";
+            echo "  WHERE usu.login='".$request->get('login')."' AND usu.clave='".md5($request->get('clave'))."' AND usu.funcionaros=f.idfuncionaros  ";
+            echo "  ";
             $session= $request->getSession();
             $session->set('idusuarios',$consulta[0]->getIdusuarios()); //se captura la Id del usuario que se acaba de loguear
             $session->set('login',$consulta[0]->getLogin()); //se captura el Login del usuario que se acaba de loguear
@@ -58,8 +63,31 @@ class DefaultController extends Controller
                             'msgS',
                             "Usuario se logueo correctamente."
                             );
-            return $this->render('principalBundle:Default:principal.html.twig');            
+            return $this->render('principalBundle:Default:index.html.twig');            
         }
          return $this->render('principalBundle:Default:index.html.twig');
     }
+
+    /**
+    * @Route("/md5/{numero}/{md5}", name="md5")
+    * 
+    *
+    */
+    
+     public function md5Action($numero,$md5)
+    {
+        //echo "md5 de ".$numero." es: ".md5($numero);
+        return $this->render('principalBundle:Default:md5.html.twig',array(
+            "numero"=>$numero, 
+            "md5"=>$md5
+        ));
+    }
+    /*public function md5Action(request $request)
+    {
+        //echo "md5 de ".$numero." es: ".md5($numero);
+        return $this->render('principalBundle:Default:md5.html.twig',array(
+            "numero"=>$request->get("numero"),
+            "md5"=>md5($request->get('numero'))
+        ));
+    }*/
 }
