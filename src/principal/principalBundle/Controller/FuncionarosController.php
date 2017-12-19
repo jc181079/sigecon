@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use principal\principalBundle\Controller\Helper\funciones;
 
 /**
  * Funcionaro controller.
@@ -22,25 +23,34 @@ class FuncionarosController extends Controller
      * @Route("/", name="funcionaros_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(request $request)
     {
-        $em = $this->getDoctrine()->getManager();
+        $em      = $this->getDoctrine()->getManager();
+        $session = $request->getSession();
+        $perfil  = $session->get('idperfil');
+        $url     = $request->getPathInfo();
+        //$em      = $this->getDoctrine()->getManager();       
+        //$modulo  = explode("/", $url);
+        //$conMod  = $em->getRepository('principalBundle:Modulos')->findBy(array('nommodulo' => $modulo[1]));
+        //$conPF    = $em->getRepository('principalBundle:Perfil')->findBy(array('idperfil' => $perfil));
+        //$permisologia = $em->getRepository('principalBundle:Permisologia')->findBy(array('idperfil'=>$conPF[0]->getIdperfil(),'idmodulos'=>$conMod[0]->getIdModulos()));
+        $permisologia=funciones::verificaPermisologia($url,$perfil,$em);
 
-        $funcionaros = $em->getRepository('principalBundle:Funcionaros')->findAll();
-        //$usuarios = $em->getRepository('principalBundle:Usuarios')->findById();
-        /*$consultaFuncionarios=$em->createQuery(
-            ' SELECT fun.idfuncionaros,fun.nombrefun,fun.apellidofun,fun.telefonofun,fun.correofun,usu.login,usu.idusuarios '.
-            ' FROM principalBundle:Funcionaros fun INNER JOIN  principalBundle:Usuarios usu WITH fun.idfuncionaros=usu.funcionaros'.    
-            ' WHERE fun.idfuncionaros=usu.funcionaros'     
-            );*/
-        //$funcionaros=$consultaFuncionarios->getResult();
-        //condicional que solo verifica si existe un funcionario con un usuario, si es nulo crea una nueva consulta de funcionario
-        //en caso de no ser nulo, es que existe un funcionario con un usuario asi que se muestra
-        //if ($funcionaros==null) $funcionaros = $em->getRepository('principalBundle:Funcionaros')->findAll();
-
-        return $this->render('funcionaros/index.html.twig', array(
-            'funcionaros' => $funcionaros,
-        ));
+        if ($permisologia!=null)
+        {
+            $incluir      = $permisologia[0]->getIncluir();
+            $consultar    = $permisologia[0]->getConsultar();
+            $modificar    = $permisologia[0]->getModificar();
+            $eliminar     = $permisologia[0]->getEliminar();
+            $funcionaros  = $em->getRepository('principalBundle:Funcionaros')->findAll();
+            return $this->render('funcionaros/index.html.twig', array('funcionaros'=>$funcionaros,'incluir'=>$incluir,'consultar'=>$consultar,'modificar'=>$modificar,'eliminar'=>$eliminar));
+            ///return $this->redirectToRoute('funcionaros_index',array('permisologia'=>$permisologia));  
+        }
+        else
+        {  
+            return $this->redirectToRoute('principal');
+        }
+        
     }
 
     /**
@@ -79,12 +89,13 @@ class FuncionarosController extends Controller
     {
         $deleteForm = $this->createDeleteForm($funcionaro);
         $em = $this->getDoctrine()->getManager();
-        $consultaUsuarios=$em->createQuery(
+        /*$consultaUsuarios=$em->createQuery(
             ' SELECT usu.login,usu.idusuarios '.
             ' FROM principalBundle:Usuarios usu '.    
             ' WHERE usu.funcionaros='.  $funcionaro->getIdfuncionaros() .''   
             );
-        $usuarios=$consultaUsuarios->getResult();
+        //$usuarios=$consultaUsuarios->getResult();*/
+        $usuarios  = $em->getRepository('principalBundle:Usuarios')->findByFuncionaros($funcionaro->getIdfuncionaros());
         return $this->render('funcionaros/show.html.twig', array(
             'funcionaro' => $funcionaro,
             'usuarios' => $usuarios,

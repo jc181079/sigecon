@@ -6,16 +6,20 @@
         <title>{% block title %}::Unidad de la Comision de Contrataciones - SIGECON::{% endblock %}</title>
         {% block stylesheets %}
             <link href="{{ asset('public/css/bootstrap/bootstrap.css') }}" rel="stylesheet">            
-            <link href="{{ asset('public/css/bootstrap/bootstrap.min.css') }}" rel="stylesheet">          
+            <link href="{{ asset('public/css/bootstrap/bootstrap.min.css') }}" rel="stylesheet">
+            <link href="{{ asset('public/css/iconic-master/open-iconic.css') }}" rel="stylesheet">
+            <link href="{{ asset('public/css/iconic-master/open-iconic-bootstrap.css') }}" rel="stylesheet">
+         
         {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />        
     </head>
     <body>
         {% block body %}{% endblock %}
         {% block javascripts %}          
-           <script src="{{ asset('public/js/jquery/jquery.js') }}" ></script>
-           <script src="{{ asset('public/js/jquery/jquery-ui.js') }}" ></script>
-           <script src="{{ asset('public/js/bootstrap/bootstrap.js') }}" ></script>           
+            <script src="{{ asset('public/js/jquery/jquery.js') }}" ></script>
+            <script src="{{ asset('public/js/bootstrap/popper.js') }}" ></script>
+            <script src="{{ asset('public/js/bootstrap/bootstrap.js') }}" ></script>
+            <script src="{{ asset('public/js/jquery/jquery-ui.js') }}" ></script>                        
         {% endblock %}
     </body>
 </html>

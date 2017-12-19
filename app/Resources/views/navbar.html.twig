@@ -1,0 +1,63 @@
+{# --- SE CREA UN SOLO NAVBAR PARA EVITAR TENER VARIOS EN DIFERENTES PAGES --- #}
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Activo: {{usu}}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#"><span class="oi oi-home" title="icon name" aria-hidden="true"></span> Principal <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><span class="oi oi-aperture" title="icon name" aria-hidden="true"></span> Solicitudes</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="oi oi-print" title="icon name" aria-hidden="true"></span> Reportes
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Estatus consolidado</a>
+          <a class="dropdown-item" href="#">Estatus por dependencias</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Consolidado de empresas</a>
+          <a class="dropdown-item" href="#">Oferentes adjudicados por proceso de contratacion</a>
+          <a class="dropdown-item" href="#">Relacion de garantias de mant. de oferta</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Inversion por dependencia</a>
+          <a class="dropdown-item" href="#">Inversion por actividad</a>
+          <a class="dropdown-item" href="#">inversion por fuente de financiamiento</a>
+          <a class="dropdown-item" href="#"></a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Consolidado de procesos desiertos</a>
+          <a class="dropdown-item" href="#">procesos desiertos por dependencia</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Consolidado de procesos terminados</a>
+          <a class="dropdown-item" href="#">Procesos terminados por dependencia</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Consolidado reuniones de la comision</a>
+          <a class="dropdown-item" href="#">Cantidad de reuniones de la comision por mes</a>
+          <a class="dropdown-item" href="#">Consolidado notificaciones realizadas</a>
+          <a class="dropdown-item" href="#">Cantidad de notificaciones de la comision por mes</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><span class="oi oi-aperture" title="icon name" aria-hidden="true"></span> Cambiar clave</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('seguridad_logout') }}">
+          <span class="oi oi-account-logout" title="icon name" aria-hidden="true"></span> 
+          Salir
+        </a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Buscar modulo" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+  </div>
+</nav>
+   
+{% endblock %}    

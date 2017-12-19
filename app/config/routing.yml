@@ -6,3 +6,7 @@ principal:
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
+
+funciones:
+    resource: '@principalBundle/Controller/Helper/'
+    type: annotation

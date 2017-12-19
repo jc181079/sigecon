@@ -9,11 +9,21 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="index")
      */
-    public function indexAction()
+    public function indexAction(request $request)
     {
+        
         return $this->render('principalBundle:Default:index.html.twig');
+    }
+
+    /**
+     * @Route("/principal", name="principal")
+     */
+    public function principalAction(request $request)
+    {
+        $session = $request->getSession();
+        return $this->render('principalBundle:Default:principal.html.twig',array("usu"=>$session->get("login")));
     }
 
     /**
@@ -25,13 +35,6 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $consulta = $em->getRepository('principalBundle:Usuarios')
             			->findBy(array('login' => $request->get('login'),'clave'=> md5($request->get('clave'))));
-        /* $query=$em->createQuery(
-            " SELECT usu.idusuarios, usu.login, f.idfuncionaros, f.nombrefun, usu.idperfil ". 
-            " FROM principalBundle:Usuarios usu INNER JOIN principalBundle:Funcionaros f  ".
-            " ".
-            "  WHERE usu.login='".$request->get('login')."' AND usu.clave='".md5($request->get('clave'))."'   ".
-            "  AND f.idfuncionaros=usu.funcionaros");
-        $consulta=$query->getResult();*/
         if($consulta==null)
         {
         	/**
@@ -48,24 +51,21 @@ class DefaultController extends Controller
         }else
         {        	
             //inicio de bloque de session de usuario en el sistema
-            echo "SELECT usu.idusuarios, usu.login, f.idfuncionaros,f.nombrefun, usu.idperfil "; 
-            echo " FROM principalBundle:Usuarios usu INNER JOIN principalBundle:Funcionaros f  ";
-            echo " ";
-            echo "  WHERE usu.login='".$request->get('login')."' AND usu.clave='".md5($request->get('clave'))."' AND usu.funcionaros=f.idfuncionaros  ";
-            echo "  ";
+
             $session= $request->getSession();
-            $session->set('idusuarios',$consulta[0]->getIdusuarios()); //se captura la Id del usuario que se acaba de loguear
-            $session->set('login',$consulta[0]->getLogin()); //se captura el Login del usuario que se acaba de loguear
+            $session->set('idusuarios',$consulta[0]->getIdusuarios());   //se captura la Id del usuario que se acaba de loguear
+            $session->set('login',$consulta[0]->getLogin());             //se captura el Login del usuario que se acaba de loguear
             $session->set('funcionaros',$consulta[0]->getFuncionaros()); //se captura la Id del funcionario que se acaba de loguear
-            $session->set('idperfil',$consulta[0]->getIdperfil()); //se captura la Id del usuario que se acaba de loguear
+            $session->set('idperfil',$consulta[0]->getIdperfil());       //se captura la Id del usuario que se acaba de loguear
             //fin de bloque de session
             $this->get('session')->getFlashBag()->add(
                             'msgS',
                             "Usuario se logueo correctamente."
                             );
-            return $this->render('principalBundle:Default:index.html.twig');            
+            //return $this->render('principalBundle:Default:principal.html.twig'); 
+            return $this->redirectToRoute('principal');           
         }
-         return $this->render('principalBundle:Default:index.html.twig');
+        return $this->render('principalBundle:Default:index.html.twig');
     }
 
     /**
@@ -82,6 +82,20 @@ class DefaultController extends Controller
             "md5"=>$md5
         ));
     }
+
+    /**
+     * Bloque de logout - termina la session del usuario
+     * y carga la ventana de login
+     * 
+     * @Route("/seguridad/logout/", name="seguridad_logout")
+     * 
+     */
+    public function logoutAction(Request $request) {
+        $session = $request->getSession();
+        $session->clear();      
+        return $this->render('principalBundle:Default:index.html.twig'); 
+    }
+
     /*public function md5Action(request $request)
     {
         //echo "md5 de ".$numero." es: ".md5($numero);

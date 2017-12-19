@@ -7,7 +7,9 @@
                 <h1><strong>.:Modulo de administracion de Funcionarios</strong></h1>
                 <p>aqui podra administrar la informacion basica de los funcionarios que trabajan con el sistema</p>
                 <footer>
-                    <a class="btn btn-default" href="{{ path('funcionaros_new') }}">Ingresar nuevo registro</a>
+                    {% if incluir==1 %}
+                        <a class="btn btn-default" href="{{ path('funcionaros_new') }}">Ingresar nuevo registro</a>
+                    {% endif %}
                 </footer>
             </div>
         </div>
@@ -30,22 +32,21 @@
                         <td>{{ funcionaro.telefonofun }}</td>
                         <td>{{ funcionaro.correofun }}</td>                    
                         <td>
-                            <ul>
-                                <li>
-                                    <a href="{{ path('funcionaros_show', { 'idfuncionaros': funcionaro.idfuncionaros }) }}">show</a>
-                                    <span class="glyphicon glyphicon-exclamation-sign"></span>
-                                </li>
-                                <li>
-                                    <a href="{{ path('funcionaros_edit', { 'idfuncionaros': funcionaro.idfuncionaros }) }}">edit</a>
-                                </li>
-                                <li>
+                            {% if consultar==1 %}
+                                <a href="{{ path('funcionaros_show', { 'idfuncionaros': funcionaro.idfuncionaros }) }}">
+                                    <span class="oi oi-eye" title="Consultar" aria-hidden="true"></span>
+                                </a>
+                            {% endif %}
+                            {% if modificar==1 %}
+                                <a href="{{ path('funcionaros_edit', { 'idfuncionaros': funcionaro.idfuncionaros }) }}">
+                                    <span class="oi oi-pencil" title="Modificar" aria-hidden="true"></span>
+                                </a>
+                            {% endif %}
                                     {# if funcionaro.login #}
                                     {# <a href="{{ path('usuarios_edit', { 'idusuarios': funcionaro.idusuarios }) }}">usuario</a>#}    
                                     {# else #}
                                     {# <a href="{{ path('usuarios_new') }}">usuario</a> #}    
                                     {# endif #}
-                                </li>
-                            </ul>
                         </td>
                     </tr>
                 {% endfor %}
