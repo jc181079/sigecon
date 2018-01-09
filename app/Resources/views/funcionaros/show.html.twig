@@ -43,27 +43,28 @@
                         </tr>
                     </tbody>
                 </table> 
-                <div class="btn-group" role="group" aria-label="Third group">                   
-                    <a class="btn btn-secondary" href="{{ path('usuarios_edit', { 'idusuarios': usuario.idusuarios }) }}">Modificar usuario</a>
+                <div class="btn-group" role="group" aria-label="Third group">
+                    <a class="btn btn-secondary" href="{{ path('usuarios_edit', { 'idusuarios': usuario.idusuarios }) }}"><span class="oi oi-person" title="Modificar" aria-hidden="true"></span> Modificar usuario</a>
                 </div>
             {% endfor %}
         {% else %}
             {% for usuario in usuarios %}
-                <div class="btn-group" role="group" aria-label="Third group">                        
-                    <a class="btn btn-secondary" href="{{ path('usuarios_new', { 'idusuarios': usuario.idusuarios }) }}">Crearle un usuario</a>
+                <div class="btn-group" role="group" aria-label="Third group">              
+                    <a class="btn btn-secondary" href="{{ path('usuarios_new', { 'idusuarios': usuario.idusuarios }) }}"><span class="oi oi-person" title="Modificar" aria-hidden="true"></span> Crearle un usuario</a>
                 </div>
             {% endfor %}
         {% endif %} 
         <div class="btn-group" role="group" aria-label="Basic example">
             <div class="btn-group mr-2" role="group" aria-label="First group">               
-                <a class="btn btn-secondary" href="{{ path('funcionaros_index') }}">Volver</a>
+                <a class="btn btn-secondary" href="{{ path('funcionaros_index') }}"><span class="oi oi-arrow-left" title="Modificar" aria-hidden="true"></span> Volver</a>
             </div>
             <div class="btn-group mr-2" role="group" aria-label="First group">               
-                <a class="btn btn-secondary" href="{{ path('funcionaros_edit', { 'idfuncionaros': funcionaro.idfuncionaros }) }}">Editar</a>
+                <a class="btn btn-secondary" href="{{ path('funcionaros_edit', { 'idfuncionaros': funcionaro.idfuncionaros }) }}"><span class="oi oi-pencil" title="Modificar" aria-hidden="true"></span> Editar</a>
             </div>
             <div class="btn-group" role="group" aria-label="Third group">   
                 {{ form_start(delete_form) }}
-                    <input class="btn btn-secondary" type="submit" value="Eliminar registro">
+                    <!--input class="btn btn-secondary" type="submit" value="Eliminar registro"-->
+                    <button type="submit" class="btn btn-secondary"><span class="oi oi-trash" title="Modificar" aria-hidden="true"></span> Eliminar</button>
                 {{ form_end(delete_form) }}
             </div> 
         </div>

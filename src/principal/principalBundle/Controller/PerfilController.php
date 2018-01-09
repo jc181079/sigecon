@@ -50,7 +50,6 @@ class PerfilController extends Controller
 
             return $this->redirectToRoute('perfil_show', array('idperfil' => $perfil->getIdperfil()));
         }
-
         return $this->render('perfil/new.html.twig', array(
             'perfil' => $perfil,
             'form' => $form->createView(),

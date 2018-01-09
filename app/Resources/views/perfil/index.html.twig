@@ -5,10 +5,7 @@
         <div class="jumbotron">
             <div class="container">
                 <h1><strong>.:Modulo de administracion de Perfiles de seguridad del sistema</strong></h1>
-                <p>aqui podra administrar los diferentes perfiles que tendran los usuarios del sistema</p>
-                <footer>
-                    <a class="btn btn-default" href="{{ path('perfil_new') }}">Ingresar nuevo registro</a>
-                </footer>
+                <p>aqui podra administrar los diferentes perfiles que tendran los usuarios del sistema e ingresar las permisologias de cada modulo al cual vaya a tener acceso el usuario</p>
             </div>
         </div>
         <table class="table table-bordered table-responsive">
@@ -22,16 +19,17 @@
                     {% if perfils %}
                         {% for perfil in perfils %}
                             <tr>
-                                <td><a href="{{ path('perfil_show', { 'idperfil': perfil.idperfil }) }}">{{ perfil.nombreper }}</a></td>                    
+                                <td><a href="{{ path('perfil_show', { 'idperfil': perfil.idperfil }) }}">{{ perfil.nombreper }}</a></td>
                                 <td>
-                                    <ul>
-                                        <li>
-                                            <a href="{{ path('perfil_show', { 'idperfil': perfil.idperfil }) }}">show</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ path('perfil_edit', { 'idperfil': perfil.idperfil }) }}">edit</a>
-                                        </li>
-                                    </ul>
+                                    <a href="{{ path('perfil_show', { 'idperfil': perfil.idperfil }) }}">
+                                        <span class="oi oi-eye" title="Consultar" aria-hidden="true"></span>
+                                    </a>
+                                    <a href="{{ path('perfil_edit', { 'idperfil': perfil.idperfil }) }}">
+                                        <span class="oi oi-pencil" title="Modificar" aria-hidden="true"></span>
+                                    </a>
+                                    <a href="{{ path('permisologia_new',{ 'idperfil': perfil.idperfil }) }}">
+                                        <span class="oi oi-shield" title="Permisologia" aria-hidden="true"></span>
+                                    </a>
                                 </td>
                             </tr>
                         {% endfor %}

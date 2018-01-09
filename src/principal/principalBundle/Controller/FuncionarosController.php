@@ -29,11 +29,6 @@ class FuncionarosController extends Controller
         $session = $request->getSession();
         $perfil  = $session->get('idperfil');
         $url     = $request->getPathInfo();
-        //$em      = $this->getDoctrine()->getManager();       
-        //$modulo  = explode("/", $url);
-        //$conMod  = $em->getRepository('principalBundle:Modulos')->findBy(array('nommodulo' => $modulo[1]));
-        //$conPF    = $em->getRepository('principalBundle:Perfil')->findBy(array('idperfil' => $perfil));
-        //$permisologia = $em->getRepository('principalBundle:Permisologia')->findBy(array('idperfil'=>$conPF[0]->getIdperfil(),'idmodulos'=>$conMod[0]->getIdModulos()));
         $permisologia=funciones::verificaPermisologia($url,$perfil,$em);
 
         if ($permisologia!=null)

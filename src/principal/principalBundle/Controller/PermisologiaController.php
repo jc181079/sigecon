@@ -43,23 +43,26 @@ class PermisologiaController extends Controller
         $permisologium = new Permisologia();
         $form = $this->createForm('principal\principalBundle\Form\PermisologiaType', $permisologium);
         $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $perfil = $this->getDoctrine()
+        $perfils = $this->getDoctrine()
                         ->getRepository('principalBundle:Perfil')
                         ->findOneBy(array('idperfil' => $request->get('idperfil')));
+        $em = $this->getDoctrine()->getManager();
+        $dql = "select m.nommodulo from principalBundle:Modulos m inner join principalBundle:Permisologia p with m.idmodulos=p.idmodulos where p.idperfil=:perfil ";
+        $query = $em->createQuery($dql);        
+        $query->setParameter('perfil', $request->get('idperfil'));
+        $modulos= $query->getResult();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();            
             $permisologium->setIdperfil($perfil);
             $em->persist($permisologium);
             $em->flush();
-
-
             return $this->redirectToRoute('permisologia_show', array('idpermisologia' => $permisologium->getIdpermisologia()));
         }
-
         return $this->render('permisologia/new.html.twig', array(
             'permisologium' => $permisologium,
-            'form' => $form->createView(),
+            'perfils'       => $perfils,
+            'modulos'       => $modulos,
+            'form'          => $form->createView(),
         ));
     }
 
